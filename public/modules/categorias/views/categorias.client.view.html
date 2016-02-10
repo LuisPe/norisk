@@ -1,0 +1,18 @@
+<section data-ng-controller="CategoriasController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Categorias</h1>
+    </div>
+    <div class="form-group">
+        <input type="text" ng-model="search" typeahead="categoria as categoria.nombre for categoria in categorias | filter:$viewValue | limitTo:8" class="form-control" typeahead-on-select="categoriaSearch($item)" placeholder="Buscar categoria...">
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="categoria in categorias | limitTo: offset - categorias.length | limitTo: pageSize" data-ng-href="#!/categorias/{{categoria._id}}" class="list-group-item">
+			<h4 class="list-group-item-heading" data-ng-bind="categoria.nombre"></h4>
+            <span data-ng-bind="categoria.descripcion"></span>
+        </a>
+    </div>
+    <pagination total-items="categorias.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="categorias.length > pageSize"></pagination>
+    <div class="alert alert-warning text-center" data-ng-hide="!categorias.$resolved || categorias.length">
+    	No existen categorias, sin embargo deseas<a href="/#!/categorias/create"> crear una</a>?
+    </div>
+</section>

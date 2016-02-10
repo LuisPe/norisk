@@ -1,0 +1,23 @@
+<section data-ng-controller="ProductosController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="producto.nombre"></h1>
+		<p>{{ producto.categoria.nombre }}</p>
+		<p data-ng-bind="producto.codigo"></p>
+		<p data-ng-bind="producto.descripcion"></p>
+		<p data-ng-bind="producto.reflectivos"></p>
+		<p data-ng-bind="producto.altura"></p>
+		<p data-ng-bind="producto.base"></p>
+		<p data-ng-bind="producto.peso"></p>
+		<p data-ng-bind="producto.colores"></p>
+		<p data-ng-bind="producto.precioUnitario"></p>
+		<p data-ng-bind="producto.stock"></p>
+	</div>
+	<div class="pull-right">
+		<a class="btn btn-primary" href="/#!/productos/{{producto._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+</section>

@@ -1,7 +1,6 @@
 <section data-ng-controller="CategoriasController" data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="categoria.nombre"></h1>
-		<p data-ng-bind="categoria.descripcion"></p>
 	</div>
 	<div class="pull-right">
 		<a class="btn btn-primary" href="/#!/categorias/{{categoria._id}}/edit">
@@ -11,4 +10,51 @@
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
 	</div>
+	<div class="row">
+		<span data-ng-repeat="producto in productos | filter : producto.categoria = categoria._id">
+       <div class="carta-container">
+           <div class="carta">
+               <div class="lado frente">
+                   <img ng-src="/productos/images/{{producto.foto}}" alt="">
+               </div>
+               <div class="lado atras">
+                  <div class="header reverso">
+                       <h4 data-ng-bind="producto.nombre"></h4>
+                   </div>
+                   <div class="body-reverso">
+                      <a style="float:right;" data-toggle="modal" data-target="#modal-fullscreen{{producto._id}}">+Info</a>
+                   </div>
+               </div>  
+           </div>
+       </div>
+       <!-- Modal fullscreen -->
+	<div class="modal modal-fullscreen fade" id="modal-fullscreen{{producto._id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		 <div class="modal-content">
+		   <div class="modal-header">
+		     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		     <h4 class="modal-title" id="myModalLabel">{{producto.nombre}}</h4>
+		   </div>
+		   <div class="modal-body">
+		      <div class="col-md-4">
+		         <img src="images/conoflex/vencedor_grande.jpg" alt="">
+		      </div>
+		      <div class="col-md-4 col-md-offset-1">
+		         <ul class="list-unstyled descripcion">
+		            <li>Codigo: {{producto.codigo}}</li>
+		            <li>Descripcion: {{producto.descripcion}}</li>
+		            <li>Reflectivos: {{producto.reflectivos}}</li>
+		            <li>Altura: {{producto.altura}}</li>
+		            <li>Base: {{producto.base}}</li>
+		            <li>Peso: {{producto.peso}}</li>
+		            <li>Colores: {{producto.colores}}</li>
+		         </ul>
+		         <button type="button" class="btn btn-default" data-dismiss="modal">Agregar a pedido</button>
+		      </div>
+		   </div>
+		 </div>
+		</div>
+	</div>
+       </span>
+    </div>
 </section>

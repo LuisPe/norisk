@@ -44,13 +44,22 @@
 </head>
 
 <body class="ng-cloak">
-	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-	<section class="content">
-		<section class="container">
-			{% block content %}{% endblock %}
+	<div id="wrapper">
+	<div class="overlay"></div>
+	<header data-ng-include="'/modules/core/views/header.client.view.html'"></header>
+	<div id="page-content-wrapper">
+		<button type="button" class="icono is-closed" data-toggle="offcanvas">
+            <span class="hamb-top"></span>
+			<span class="hamb-middle"></span>
+			<span class="hamb-bottom"></span>
+        </button>
+		<section class="content">
+			<section class="container">
+				{% block content %}{% endblock %}
+			</section>
 		</section>
-	</section>
-
+	</div>
+	</div>
 	<!--Embedding The User Object-->
 	<script type="text/javascript">
 		var user = {{ user | json | safe }};
@@ -63,6 +72,48 @@
 	<!--Livereload script rendered -->
 	<script type="text/javascript" src="http://{{request.hostname}}:35729/livereload.js"></script>
 	{% endif %}
+	<script>
+	    $('body').vegas({
+	        delay: 4000,
+	        timer: false,
+	        shuffle: true,
+	        transitionDuration: 2000,
+
+	        slides: [
+	            { src: "http://www.bahialegal.com.ar/wp-content/uploads/2014/05/Seguridad-vial.jpg" },
+	            { src: "http://www.bp.com/content/dam/bp-country/es_es/images/seguridadVial.jpg" },
+	            { src: "http://www.tornquistdistrital.com.ar/wp-content/uploads/2014/10/Amortiguadores-de-impacto.-Tecnologia-aplicada-a-la-seguridad-vial.jpg" },
+	            { src: "http://www.grupoformline.es/wp-content/uploads/2014/06/seg1.jpg" }
+	        ]
+	    });
+	    var trigger = $('.icono'),
+	          overlay = $('.overlay'),
+	         isClosed = false;
+
+	        trigger.click(function () {
+	          icono_cross();      
+	        });
+
+	        
+	        function icono_cross() {
+
+	          if (isClosed == true) {          
+	            overlay.hide();
+	            trigger.removeClass('is-open');
+	            trigger.addClass('is-closed');
+	            isClosed = false;
+	          } else {   
+	            overlay.show();
+	            trigger.removeClass('is-closed');
+	            trigger.addClass('is-open');
+	            isClosed = true;
+	          }
+	      }
+	      
+	      $('[data-toggle="offcanvas"]').click(function () {
+	            $('#wrapper').toggleClass('toggled');
+	      });
+	</script>
 </body>
 
 </html>

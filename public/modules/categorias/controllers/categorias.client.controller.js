@@ -1,9 +1,11 @@
 'use strict';
 
 // Categorias controller
-angular.module('categorias').controller('CategoriasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Categorias',
-	function($scope, $stateParams, $location, Authentication, Categorias) {
+angular.module('categorias').controller('CategoriasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Categorias','Productos',
+'$filter',
+	function($scope, $stateParams, $location, Authentication, Categorias, Productos,$filter) {
 		$scope.authentication = Authentication;
+		$scope.productos = Productos.query();
 	  	$scope.currentPage = 1;
 	  	$scope.pageSize = 10;
 	  	$scope.offset = 0;
@@ -17,8 +19,10 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 		$scope.create = function() {
 			// Create new Category object
 			var categoria = new Categorias ({
+				categoria: this.categoria,
 				nombre: this.nombre,
-				descripcion: this.descripcion
+				descripcion: this.descripcion,
+				foto: this.foto
 			});
 
 			// Redirect after save
@@ -75,6 +79,11 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 		// Search for a categoria
 		$scope.categoriaSearch = function(producto) {
 			$location.path('categorias/' + producto._id);
+		};
+
+		//Listado de productos
+		$scope.listarProductos = function(categoria){
+			$location.path('/categorias/' + categoria._id);
 		};
 	}
 ]);

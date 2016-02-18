@@ -1,0 +1,78 @@
+/*------------------------------*/
+/*        EFECTO ROTAR          */
+/*------------------------------*/
+.rotar{
+   transform:rotateY(0deg);
+   transition-duration: .3s;
+   -webkit-transform:rotateY(0deg);
+   -webkit-transition-duration: .3s;
+}
+.rotar:hover{
+   transform:rotateY(180deg);
+   transition-duration: .3s;
+   -webkit-transform:rotateY(180deg);
+   -webkit-transition-duration: .3s;
+}
+
+.carta-container {
+  display: inline-block;
+  height: 300px;
+  margin: 10px;
+  position: relative;
+  width: 260px;
+  z-index: 1;
+}
+.carta-container {
+    -webkit-perspective: 800;
+  -moz-perspective: 800;
+  perspective: 800;
+}
+.carta {
+  box-shadow: 0px 0px 5px black;
+  height: 100%;
+  width: 100%;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: all 0.3s;
+    
+  -moz-transform-style: preserve-3d;
+  -moz-transition: all 0.3s;
+    
+  transform-style: preserve-3d;
+  transition: all 0.3s;
+}
+.carta-container:hover .carta{
+  -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.carta .lado{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.carta .frente{
+  height: 100%;
+  width: 100%;
+}
+.carta .atras{
+  background: #100809;
+  color: #969493;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.text-center {
+    color: aliceblue;
+}
+
+.listado {
+   margin-left: 10px;
+   text-align: left;
+   font-size: 13px;
+}

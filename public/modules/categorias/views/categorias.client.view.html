@@ -1,4 +1,4 @@
-<section data-ng-controller="CategoriasController" data-ng-init="find()">
+<!-- <section data-ng-controller="CategoriasController" data-ng-init="find()">
     <div class="page-header">
         <h1>Categorias</h1>
     </div>
@@ -14,5 +14,32 @@
     <pagination total-items="categorias.length" ng-model="currentPage" ng-change="pageChanged()" max-size="pageSize" ng-show="categorias.length > pageSize"></pagination>
     <div class="alert alert-warning text-center" data-ng-hide="!categorias.$resolved || categorias.length">
     	No existen categorias, sin embargo deseas<a href="/#!/categorias/create"> crear una</a>?
+    </div>
+</section> -->
+
+<section class="container" data-ng-controller="CategoriasController" data-ng-init="find()">
+    <div class="alert alert-warning text-center" data-ng-hide="!categorias.$resolved || categorias.length">
+        No existen categorias, sin embargo deseas <a href="/#!/categorias/create">crear uno</a>?
+    </div>
+
+    <div class="panel-heading">
+        <h1 class="page-header text-center">Categorias</h1>
+    </div>
+    <div class="row">
+       <div class="carta-container" data-ng-repeat="categoria in categorias">
+           <div class="carta">
+               <div class="lado frente">
+                   <img ng-src="/categorias/images/{{categoria.foto}}" alt="">
+               </div>
+               <div class="lado atras">
+                  <div class="header reverso">
+                       <h4 data-ng-bind="categoria.nombre"></h4>
+                   </div>
+                   <div class="body-reverso">
+                        <p ng-click="listarProductos(categoria)">Ver productos</p>
+                   </div>
+               </div>  
+           </div>
+       </div>
     </div>
 </section>

@@ -1,0 +1,57 @@
+.descripcion{
+   font-size: 24px;
+}
+/* .modal-fullscreen */
+
+.modal-fullscreen {
+   background-color: rgba(0, 0, 0, 0.8);
+   color: aliceblue;  
+}
+.modal-fullscreen .modal-content {
+  background: transparent;
+  border: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.modal-backdrop.modal-backdrop-fullscreen {
+  background: #000;
+}
+.modal-backdrop.modal-backdrop-fullscreen.in {
+  opacity: .97;
+  filter: alpha(opacity=97);
+}
+
+/* .modal-fullscreen size: we use Bootstrap media query breakpoints */
+
+.modal-fullscreen .modal-dialog {
+  margin: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .modal-fullscreen .modal-dialog {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .modal-fullscreen .modal-dialog {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .modal-fullscreen .modal-dialog {
+     width: 1170px;
+  }
+}
+.close{
+   float: right;
+   font-size: 70px;
+   font-weight: 100;
+   line-height: 1;
+   color: #fff;
+   opacity: 1;
+}
+.close:hover{
+   color: dimgrey;
+}

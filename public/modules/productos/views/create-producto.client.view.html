@@ -59,7 +59,7 @@
                         <input type="text" data-ng-model="colores" id="colores" class="form-control" placeholder="Colores" required>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" data-ng-show="authentication.user">
                     <input type="submit" class="btn btn-success">
                 </div>
 				<div data-ng-show="error" class="text-danger">

@@ -21,9 +21,9 @@
            </div>  
        </div>
     </div>
-	<div class="pull-right">
+	<div class="pull-right" data-ng-show="authentication.user">
 		<a class="btn btn-primary" href="/#!/productos/{{producto._id}}/edit">Editar</a>
 		<a class="btn btn-warning" data-ng-click="remove();">Eliminar</a>
-		<a class="btn btn-success" href="/#!/categorias">Volver</a>
-	</div>
+  </div>
+	<a class="pull-right btn btn-success" href="/#!/categorias">Volver</a>
 </section>

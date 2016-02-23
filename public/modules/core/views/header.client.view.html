@@ -3,21 +3,21 @@
     <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
         <ul class="nav sidebar-nav">
             <li class="sidebar-brand">
-                <a href="#">
+                <a href="/#!/">
                    NORISK
                 </a>
             </li>
             <li>
-                <a href="#">La empresa</a>
+                <a href="/#!/empresa">La empresa</a>
             </li>
             <li>
-                <a href="producto.html">Productos</a>
+                <a href="/#!/categorias">Categorías</a>
             </li>
             <li>
-                <a href="#">Presupuesto</a>
+                <a href="/#!/presupuesto">Presupuesto</a>
             </li>
             <li>
-                <a href="#">Contacto</a>
+                <a href="/#!/contacto">Contacto</a>
             </li>
             <span class="social-link">
                 <a href=""><i class="fa fa-facebook-official"></i></a>
@@ -28,6 +28,18 @@
             <span class="social-link">
                 <a href=""><i class="fa fa-linkedin-square"></i></a>
             </span>
+            <li class="dropdown" data-ng-show="authentication.user">
+                <a href="#" data-toggle="dropdown">
+                	Menú administrador<b class="caret"></b>
+                </a>
+		        <ul class="dropdown-menu">
+		        	<a href="/#!/productos">Lista de productos</a>
+		          	<a href="/#!/productos/create">Crear Producto</a>
+		        </ul>
+            </li>
+            <li>
+				<a href="/auth/signout" data-ng-show="authentication.user">Salir</a>
+			</li>
         </ul>
     </nav>
 	        <!-- /#sidebar-wrapper -->

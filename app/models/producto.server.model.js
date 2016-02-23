@@ -55,14 +55,10 @@ var ProductoSchema = new Schema({
 		default: '',
 		trim: true
 	},
-	precioUnitario: {
-		type: Number,
-		default: 0
-	},
-	stock: {
-		type: Number,
-		default: 0,
-		min: 0
+	foto: {
+		type: String,
+		default: '',
+		trim: true
 	}
 });
 

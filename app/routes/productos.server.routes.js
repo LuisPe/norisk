@@ -2,6 +2,7 @@
 
 module.exports = function(app) {
 	var productos = require('../controllers/productos.server.controller');
+	var users = require('../controllers/users.server.controller');
 
 	app.route('/productos')
 		.get(productos.list)

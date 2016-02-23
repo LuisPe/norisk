@@ -15,7 +15,7 @@ angular.module('categorias').config(['$stateProvider',
 		}).
 		state('view-categoria', {
 			url: '/categorias/:categoriaId',
-			templateUrl: 'modules/categorias/views/view-categoria.client.view.html'
+			templateUrl: 'modules/categorias/views/view-categoria.client.view.html',
 		}).
 		state('edit-categoria', {
 			url: '/categorias/:categoriaId/edit',

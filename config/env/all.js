@@ -16,6 +16,7 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/vegas/vegas.min.css',
+				'public/lib/font-awesome/css/font-awesome.min.css',
 				'public/lib/bootstrap/dist/css/barraLateral.css',
 			],
 			js: [

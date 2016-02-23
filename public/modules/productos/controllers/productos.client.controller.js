@@ -8,7 +8,7 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 		$scope.currentPage = 1;
 		$scope.pageSize = 10;
 		$scope.offset = 0;
-
+		
 		// Page changed handler
 		$scope.pageChanged = function() {
 			$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
@@ -26,8 +26,7 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 				base: this.base,
 				peso: this.peso,
 				colores: this.colores,
-				precioUnitario: this.precioUnitario,
-				stock: this.stock
+				foto: this.foto
 			});
 
 			// Redirect after save

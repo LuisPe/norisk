@@ -1,5 +1,25 @@
+.link{
+  color: orange;
+}
+.link:hover{
+  color: #fff;
+}
+.listado, .link{
+  cursor: pointer;
+}
+.listado{
+   margin-left: 10px;
+   margin-right: 10px;
+   text-align: left;
+   font-size: 44px;
+}
 .descripcion{
-   font-size: 24px;
+  font-size: 24px;
+  font-weight: bold;
+  color: orange;
+}
+.detalleProducto{
+  font-size: 19px;
 }
 /* .modal-fullscreen */
 
@@ -20,7 +40,9 @@
   opacity: .97;
   filter: alpha(opacity=97);
 }
-
+.modal-backdrop{
+  position: inherit !important;
+}
 /* .modal-fullscreen size: we use Bootstrap media query breakpoints */
 
 .modal-fullscreen .modal-dialog {
@@ -54,4 +76,7 @@
 }
 .close:hover{
    color: dimgrey;
+}
+.panel-heading{
+  padding: 10px 0px;
 }

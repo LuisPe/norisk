@@ -9,6 +9,7 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 	  	$scope.currentPage = 1;
 	  	$scope.pageSize = 10;
 	  	$scope.offset = 0;
+	  	$scope.mostrar = false;
 
 	  	// Page changed handler
 	  	$scope.pageChanged = function() {
@@ -85,5 +86,9 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 		$scope.listarProductos = function(categoria){
 			$location.path('/categorias/' + categoria._id);
 		};
+
+		$scope.mostrar = function(){
+			$scope.mostrar = !$scope.mostrar;
+		}
 	}
 ]);

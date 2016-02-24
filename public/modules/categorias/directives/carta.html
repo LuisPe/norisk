@@ -1,0 +1,49 @@
+<div class="carta-container">
+   <div class="carta">
+       <div class="lado frente">
+           <img ng-src="/images/{{categoria.categoria}}/{{producto.nombre}}.jpg" alt="">
+       </div>
+       <div class="lado atras">
+          <div class="header reverso">
+               <h4 data-ng-bind="producto.nombre"></h4>
+           </div>
+           <div class="body-reverso listado">
+              <a style="float:right;" data-toggle="modal" data-target="#modal-fullscreen{{producto._id}}">+Info</a>
+           </div>
+       </div>  
+   </div>
+</div>
+<!-- Modal fullscreen -->
+  <div class="modal modal-fullscreen fade" id="modal-fullscreen{{producto._id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+         <h2 class="modal-title text-center" id="myModalLabel">{{producto.nombre}}</h2>
+       </div>
+       <div class="modal-body">
+          <div class="col-md-4">
+             <img ng-src="/images/{{categoria.categoria}}/{{producto.codigo}}.jpg" alt="">
+          </div>
+          <div class="col-md-7 col-md-offset-1">
+        <ul class="list-unstyled">
+          <li><span class="descripcion">Codigo: </span><span class="detalleProducto">{{producto.codigo}}</span></li>
+          <li><span class="descripcion">Descripcion: </span><span class="detalleProducto">{{producto.descripcion}}</li>
+          <li><span class="descripcion">Reflectivos: </span><span class="detalleProducto">{{producto.reflectivos}}</span></li>
+          <li><span class="descripcion">Altura: </span><span class="detalleProducto">{{producto.altura}}</span></li>
+          <li><span class="descripcion">Base: </span><span class="detalleProducto">{{producto.base}}</span></li>
+          <li><span class="descripcion">Peso: </span><span class="detalleProducto">{{producto.peso}}</span></li>
+          <li><span class="descripcion">Colores: </span><span class="detalleProducto">{{producto.colores}}</span></li>
+        </ul>
+        <button class="btn btn-default" ng-click="mostrar()">Agregar a pedido</button>
+        <span ng-hide="mostrar" data-ng-controller="PedidoController">
+          <label>Cantidad: </label>
+          <input ng-model="cantidad" class="form-control"></input>
+          <button ng-click="agregarPedido(producto.nombre, cantidad)" type="button" class="btn btn-default" data-dismiss="modal">Enviar</button>
+        </span>
+        <a class="btn btn-primary" href="/#!/productos/{{producto._id}}/edit" data-ng-show="authentication.user">Editar</a>
+          </div>
+       </div>
+     </div>
+    </div>
+  </div>

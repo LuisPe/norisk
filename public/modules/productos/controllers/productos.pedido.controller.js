@@ -1,28 +1,27 @@
 'use strict';
 
-angular.module('productos').factory('Pedido', ['Productos', function(Productos){
-	var pedido = [{"producto":"Algo", "cantidad":3}];
-	var pedidoService = {};
+angular.module('productos').controller('PedidoController', ['PedidoService', '$scope', function(PedidoService,$scope){
+	$scope.Pedidos = PedidoService.pedido;
+	$scope.editar = false;
 
-	pedidoService.agregarProducto = function(nombre, cantidad){
-		pedido.push({"producto":nombre,"cantidad":cantidad}); 
+	$scope.agregarPedido = function(nombre,cantidad){
+		if(PedidoService.existeProducto(nombre)){
+			PedidoService.eliminarProducto(nombre);
+			PedidoService.agregarProducto(nombre,cantidad);
+		} else {
+			PedidoService.agregarProducto(nombre,cantidad);
+		};
 	};
 
-	pedidoService.eliminarProducto = function(producto){
-		pedido.delete(producto.nombre);
-	};
+	$scope.$watch('pedido', function() {
+        PedidoService.pedido = $scope.Pedidos;
+    });
 
-	pedidoService.listarProductos = function(){
-		return pedido;
-	};
-
-	return pedidoService;
+    $scope.editar = function(){
+    	$scope.editar = !$scope.editar;
+    };
+    $scope.nuevaCantidad = function(pedido){
+    	PedidoService.editarProducto(pedido);
+    	$scope.editar = false;
+    }
 }]);
-
-function listarPedido($scope,Pedido){
-	$scope.lista = Pedido.listarProductos;
-}
-
-function agregarPedido($scope,Pedido){
-	$scope.agregarProducto = Pedido.agregarProducto;
-}

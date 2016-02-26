@@ -2,11 +2,8 @@
 
 angular.module('productos').service('PedidoService', function(){
 	var pedido = this;
-<<<<<<< HEAD
-	this.pedido = [];
-=======
 	this.pedido = [{'producto':'Algo', 'cantidad':3},{'producto':'Segundo','cantidad':1}];
->>>>>>> a994ea6d3d11b4c9f226075edb923c25c76c9406
+
 
 	this.agregarProducto = function(nombre, cantidad){
 		this.pedido.push({'producto':nombre,'cantidad':cantidad}); 

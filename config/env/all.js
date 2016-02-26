@@ -31,6 +31,7 @@ module.exports = {
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/jquery/dist/jquery.min.js',
 				'public/lib/bootstrap/dist/js/bootstrap.min.js',
+				'public/lib/ng-file-upload/ng-file-upload.min.js',
 				'public/lib/vegas/vegas.js'
 			]
 		},

@@ -4,6 +4,7 @@ module.exports = function(app) {
 	var categorias = require('../controllers/categorias.server.controller');
 	var users = require('../controllers/users.server.controller');
 	var apiAuth = require('../controllers/api.authorization.server.controller');
+	var multer  = require('multer');
 
 	app.route('/categorias')
 		.get(categorias.list)
@@ -16,4 +17,6 @@ module.exports = function(app) {
 
 	// Finish by binding the article middleware
 	app.param('categoriaId', categorias.getByID);
+	
+	app.use(multer({ dest: './public/images/'}).single('image'));
 };

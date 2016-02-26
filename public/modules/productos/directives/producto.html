@@ -1,9 +1,30 @@
-<ul class="list-unstyled">
+<!-- <ul class="list-unstyled pedido">
     <li>
-        <span data-ng-bind="pedido.producto"></span>
-        <span data-ng-bind="pedido.cantidad"></span>
-        <input type="text" ng-hide="editar">
-        <span><i class="fa fa-edit" ng-click="editar()"></i></span>
-        <span><i class="fa fa-close"></i></span>
+        <span></span>
+        <span></span>
+        
+        <span><i class="selectores fa fa-check" ng-hide="editar" ng-click="editarProducto(pedido.producto,cantidad)"></i></span>
+        <span><i class="selectores fa fa-edit" ng-click="editar()"></i></span>
+        <span></span>
     </li>
-</ul>
+</ul> -->
+<table class="table cabecera">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Nueva cantidad</th>
+            <th>Aceptar</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody class="pedido">
+        <tr ng-repeat="pedido in Pedidos">
+            <td data-ng-bind="pedido.producto"></td>
+            <td data-ng-bind="pedido.cantidad"></td>
+            <td><input class="cantidad" type="text" ng-model="cantidad"></td>
+            <td><i class="selectores fa fa-check" ng-click="editarProducto(pedido.producto,cantidad)"></i></td>
+            <td><i class="selectores fa fa-close" ng-click="eliminarProducto(pedido.producto)"></i></td>
+        </tr>
+    </tbody>
+</table>

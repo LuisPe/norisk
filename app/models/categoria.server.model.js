@@ -27,10 +27,9 @@ var CategoriaSchema = new Schema({
 		default: '',
 		trim: true
 	},
-	foto: {
-		type: String,
-		default: '',
-		trim: true
+	image:{ 
+	    type: String, 
+	    default: ''
 	}
 });
 

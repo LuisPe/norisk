@@ -76,3 +76,20 @@
    text-align: left;
    font-size: 13px;
 }
+.pedido{
+  font-size: 18px;
+}
+.cabecera, .pedido{
+  color: aliceblue;
+}
+.pedido{
+  text-align: center;
+}
+.selectores{
+  font-size: 22px;
+  margin-left: 5px;
+}
+.cantidad{
+  color: #000;
+  width: 45px;
+}

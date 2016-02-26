@@ -2,7 +2,7 @@
 
 angular.module('productos').service('PedidoService', function(){
 	var pedido = this;
-	this.pedido = [{'producto':'Algo', 'cantidad':3}];
+	this.pedido = [{'producto':'Algo', 'cantidad':3},{'producto':'Segundo','cantidad':1}];
 
 	this.agregarProducto = function(nombre, cantidad){
 		this.pedido.push({'producto':nombre,'cantidad':cantidad}); 
@@ -14,19 +14,22 @@ angular.module('productos').service('PedidoService', function(){
 	};
 
 	this.editarProducto = function(producto,cantidad){
-		var index = this.pedido.indexOf(producto);
-		this.pedido[index] = {'producto':producto,'cantidad':cantidad};
+		$.each(this.pedido, function() {
+		    if (this.producto == producto) {
+		        this.cantidad = cantidad;
+		    }
+		});
 	};
 
 	this.listarProductos = function(){
 		return pedido;
 	};
 	this.existeProducto = function(producto){
-		for(var i = 0, len = this.pedido.length; i < len; i++){
-			if(this.pedido[i].producto === producto){
+		$.each(this.pedido, function() {
+			if(this.producto === producto){
 				return true;
 			}
-		}
+		});
 		return false;
 	};
 });

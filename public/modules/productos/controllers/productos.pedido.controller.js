@@ -10,7 +10,14 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 				PedidoService.agregarProducto(nombre,cantidad);
 			} else {
 				PedidoService.agregarProducto(nombre,cantidad);
-			}
+			};
+			toastr.options = {
+			  "closeButton": true,
+			  "progressBar": true,
+			  "timeOut": "3000",
+			  "extendedTimeOut": "1000"
+			};
+			toastr.success('Pedido agregado');
 		};
 
 		$scope.editarProducto = function(nombre,cantidad){

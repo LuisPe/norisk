@@ -39,6 +39,7 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+			toast('Categoría creada');
 		};
 
 		/*$scope.upload = function(image){
@@ -69,7 +70,8 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 				$scope.categoria.$remove(function() {
 					$location.path('categorias');
 				});
-			}
+			};
+			toast('Categoría eliminada');
 		};
 
 		// Update existing Category
@@ -81,6 +83,7 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+			toast('Categoría actualizada');
 		};
 
 		// Find a list of Categorias
@@ -107,6 +110,16 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 
 		$scope.mostrar = function(){
 			$scope.mostrar = !$scope.mostrar;
+		};
+
+		var toast = function(msje){
+			toastr.options = {
+			  "closeButton": true,
+			  "progressBar": true,
+			  "timeOut": "3000",
+			  "extendedTimeOut": "1000"
+			};
+			toastr.success(msje);
 		};
 	}
 ]);

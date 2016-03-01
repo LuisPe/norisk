@@ -38,7 +38,7 @@
         <button class="btn btn-default" ng-click="mostrar()">Agregar a pedido</button>
         <span ng-hide="mostrar" data-ng-controller="PedidoController">
           <label>Cantidad: </label>
-          <input ng-model="cantidad" class="form-control"></input>
+          <input type="number" ng-model="cantidad" class="form-control"></input>
           <button ng-click="agregarPedido(producto.nombre, cantidad)" type="button" class="btn btn-default" data-dismiss="modal">Enviar</button>
         </span>
         <a class="btn btn-primary" href="/#!/productos/{{producto._id}}/edit" data-ng-show="authentication.user">Editar</a>

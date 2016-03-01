@@ -35,8 +35,7 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 	    });
 
 	    //SEND EMAIL
-	    this.sendMail = function(){
-	    	console.log(this.contactoNombre + this.contactoEmail + this.contactoTelefono);
+	    $scope.sendMail = function(){
 		    var data = ({
 		    	contactoNombre : this.contactoNombre,
 		    	contactoEmail : this.contactoEmail,
@@ -46,10 +45,10 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 
 		    $http.post('/presupuesto', data)
 		    	.success(function(data, status, headers, config){
-		    		console.log("Se mando Julian");
+		    		console.log("Se envió correctamente el presupuesto");
 		    	})
 		    	.error(function(data, status, headers, config){
-		    		console.log("No se mando ni mierda");
+		    		console.log("No se ha enviado el presupuesto");
 		    	});
 		    };
 		}

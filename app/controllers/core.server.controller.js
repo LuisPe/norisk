@@ -1,7 +1,5 @@
 'use strict';
 
-<<<<<<< HEAD
-=======
 
 var nodemailer = require('nodemailer');
 
@@ -14,7 +12,6 @@ var transporter = nodemailer.createTransport({
     }
 });
 
->>>>>>> 76b0a6fcdf751097d9201029d5751fbd175f5280
 /**
  * Module dependencies.
  */
@@ -23,14 +20,35 @@ exports.index = function(req, res) {
 		user: req.user || null,
 		request: req
 	});
-<<<<<<< HEAD
-=======
+};
+
+/**
+ * Enviar consulta por email.
+ */
+exports.sendMailContacto = function(req, res){
+
+	var data = req.body;
+
+	var mailOptions = {
+		from: data.contactoEmail,
+		to:'luiyo_toloy@hotmail.com',
+		subject: 'Nueva Consulta Norisk',
+		html: "<b>Nombre: </b> "+data.contactoNombre+"<br><b>Email: </b>"+data.contactoEmail+"<br><b>Teléfono: </b>"+data.contactoTelefono+"<br><b>Consulta: </b><br>"+data.contactoConsulta,
+	};
+
+	transporter.sendMail(mailOptions, function(error, info){
+		if(error){
+		    return console.log(error);
+		}
+	console.log('Message sent: ' + info.response);
+	});
+	res.json('Success');
 };
 
 /**
  * Enviar presupuesto por email.
  */
-exports.sendMail = function(req, res){
+exports.sendMailPresupuesto = function(req, res){
 
 	var data = req.body;
 	var productos = "";
@@ -38,7 +56,6 @@ exports.sendMail = function(req, res){
 	for (var p in data.pedido){
 		productos += "<li>Producto: "+data.pedido[p].producto+ ", Cantidad: "+data.pedido[p].cantidad+"</li>";
 	};
-	console.log(productos);
 
 	var mailOptions = {
 		from: data.contactoEmail,
@@ -53,5 +70,5 @@ exports.sendMail = function(req, res){
 		}
 	console.log('Message sent: ' + info.response);
 	});
->>>>>>> 76b0a6fcdf751097d9201029d5751fbd175f5280
+	res.json('Success');
 };

@@ -82,9 +82,6 @@
 .cabecera, .pedido{
   color: aliceblue;
 }
-.pedido{
-  text-align: center;
-}
 .selectores{
   cursor: pointer;
   font-size: 22px;

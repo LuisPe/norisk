@@ -2,7 +2,7 @@
 
 angular.module('productos').service('PedidoService', function(){
 	var pedido = this;
-	this.pedido = [];
+	this.pedido = [{'producto':'Algo','cantidad':4}];
 
 
 	this.agregarProducto = function(nombre, cantidad){
@@ -22,8 +22,8 @@ angular.module('productos').service('PedidoService', function(){
 		});
 	};
 
-	this.listarProductos = function(){
-		return pedido;
+	this.limpiarPedido = function(){
+		this.pedido = [];
 	};
 
 	this.existeProducto = function(producto){

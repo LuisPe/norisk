@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('productos').controller('PedidoController', ['PedidoService', '$scope',
-	function(PedidoService,$scope){
+angular.module('productos').controller('PedidoController', ['PedidoService', '$scope', '$http', '$location',
+	function(PedidoService,$scope,$http,$location){
 		$scope.Pedidos = PedidoService.pedido;
 
 		$scope.agregarPedido = function(nombre,cantidad){
@@ -43,13 +43,24 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 		    	pedido : $scope.Pedidos
 		    });
 
-		    $http.post('/presupuesto', data)
-		    	.success(function(data, status, headers, config){
+		    $http({
+		    	method:'POST',
+		    	url:'/presupuesto',
+		    	data: data,
+		    }).then(function successCallback(response) {
 		    		console.log("Se envió correctamente el presupuesto");
-		    	})
-		    	.error(function(data, status, headers, config){
+					toastr.options = {
+					  "closeButton": true,
+					  "progressBar": true,
+					  "timeOut": "3000",
+					  "extendedTimeOut": "1000"
+					};
+		    		toastr.success('Pedido enviado');
+		    		PedidoService.limpiarPedido();
+		    		$location.path('/');
+			  }, function errorCallback(response) {
 		    		console.log("No se ha enviado el presupuesto");
-		    	});
-		    };
+			  });
+		};
 	}
 ]);

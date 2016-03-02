@@ -10,6 +10,11 @@ var mongoose = require('mongoose'),
  * Empresa Schema
  */
 var EmpresaSchema = new Schema({
+	nombre: {
+		type: String,
+		default: '',
+		trim: true
+	},
 	descripcion: {
 		type: String,
 		default: '',

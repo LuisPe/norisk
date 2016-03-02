@@ -4,39 +4,10 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+  errorHandler = require('./errors.server.controller'),
+  Empresa = mongoose.model('Empresa'),
     _ = require('lodash');
 
-/**
- * Create a Empresa
- */
-exports.create = function(req, res) {
+var crud = require('./crud.server.controller')('Empresa', 'nombre');
 
-};
-
-/**
- * Show the current Empresa
- */
-exports.read = function(req, res) {
-
-};
-
-/**
- * Update a Empresa
- */
-exports.update = function(req, res) {
-
-};
-
-/**
- * Delete an Empresa
- */
-exports.delete = function(req, res) {
-
-};
-
-/**
- * List of Empresas
- */
-exports.list = function(req, res) {
-
-};
+module.exports = crud;

@@ -3,17 +3,13 @@
         <tr>
             <th>Producto</th>
             <th>Cantidad</th>
-            <th>Nueva cantidad</th>
-            <th>Aceptar</th>
             <th>Eliminar</th>
         </tr>
     </thead>
     <tbody class="pedido">
         <tr ng-repeat="pedido in Pedidos">
             <td data-ng-bind="pedido.producto"></td>
-            <td data-ng-bind="pedido.cantidad"></td>
-            <td data-ng-bind="pedido.cantidad"><input class="cantidad" type="text" ng-model="cantidad"></td>
-            <!-- <td><i class="selectores fa fa-check" ng-click="editarProducto(pedido.producto,cantidad)"></i></td> -->
+            <td><input type="text" class="cantidad" ng-model="pedido.cantidad"></td>
             <td><i class="selectores fa fa-close" ng-click="eliminarProducto(pedido.producto)"></i></td>
         </tr>
     </tbody>

@@ -10,7 +10,14 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 				PedidoService.agregarProducto(nombre,cantidad);
 			} else {
 				PedidoService.agregarProducto(nombre,cantidad);
-			}
+			};
+			toastr.options = {
+			  "closeButton": true,
+			  "progressBar": true,
+			  "timeOut": "3000",
+			  "extendedTimeOut": "1000"
+			};
+			toastr.success('Pedido agregado');
 		};
 
 		$scope.editarProducto = function(nombre,cantidad){
@@ -26,5 +33,23 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 		$scope.$watch('pedido', function() {
 	        PedidoService.pedido = $scope.Pedidos;
 	    });
+
+	    //SEND EMAIL
+	    $scope.sendMail = function(){
+		    var data = ({
+		    	contactoNombre : this.contactoNombre,
+		    	contactoEmail : this.contactoEmail,
+		    	contactoTelefono : this.contactoTelefono,
+		    	pedido : $scope.Pedidos
+		    });
+
+		    $http.post('/presupuesto', data)
+		    	.success(function(data, status, headers, config){
+		    		console.log("Se envió correctamente el presupuesto");
+		    	})
+		    	.error(function(data, status, headers, config){
+		    		console.log("No se ha enviado el presupuesto");
+		    	});
+		    };
 	}
 ]);

@@ -18,6 +18,7 @@ module.exports = {
 				'public/lib/vegas/vegas.min.css',
 				'public/lib/font-awesome/css/font-awesome.min.css',
 				'public/lib/bootstrap/dist/css/barraLateral.css',
+				'public/lib/toastr/toastr.min.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -32,7 +33,8 @@ module.exports = {
 				'public/lib/jquery/dist/jquery.min.js',
 				'public/lib/bootstrap/dist/js/bootstrap.min.js',
 				'public/lib/ng-file-upload/ng-file-upload.min.js',
-				'public/lib/vegas/vegas.js'
+				'public/lib/vegas/vegas.js',
+				'public/lib/toastr/toastr.min.js'
 			]
 		},
 		css: [

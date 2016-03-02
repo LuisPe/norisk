@@ -54,7 +54,14 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 				$scope.producto.$remove(function() {
 					$location.path('productos');
 				});
-			}
+			};
+			toastr.options = {
+			  "closeButton": true,
+			  "progressBar": true,
+			  "timeOut": "3000",
+			  "extendedTimeOut": "1000"
+			};
+			toast('Producto eliminado');
 		};
 
 		// Update existing Product
@@ -67,6 +74,7 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+			toast('Producto actualizado')
 		};
 
 		var appendCategory = function appendCategory(p) {
@@ -92,6 +100,16 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 		// Search for a producto
 		$scope.productoSearch = function(producto) {
 			$location.path('productos/' + producto._id);
+		};
+
+		var toast = function(msje){
+			toastr.options = {
+			  "closeButton": true,
+			  "progressBar": true,
+			  "timeOut": "3000",
+			  "extendedTimeOut": "1000"
+			};
+			toastr.success(msje);
 		};
 	}
 ]);

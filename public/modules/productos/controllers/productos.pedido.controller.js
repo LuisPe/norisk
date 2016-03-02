@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('productos').controller('PedidoController', ['PedidoService', '$scope', '$http',
-	function(PedidoService,$scope,$http){
+angular.module('productos').controller('PedidoController', ['PedidoService', '$scope',
+	function(PedidoService,$scope){
 		$scope.Pedidos = PedidoService.pedido;
 
 		$scope.agregarPedido = function(nombre,cantidad){
@@ -16,7 +16,7 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 		$scope.editarProducto = function(nombre,cantidad){
 			if(cantidad){
 	    		PedidoService.editarProducto(nombre,cantidad);
-			};
+			}
 		};
 
 		$scope.eliminarProducto = function(nombre){
@@ -26,24 +26,5 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 		$scope.$watch('pedido', function() {
 	        PedidoService.pedido = $scope.Pedidos;
 	    });
-
-	    //SEND EMAIL
-	    this.sendMail = function(){
-	    	console.log(this.contactoNombre + this.contactoEmail + this.contactoTelefono);
-		    var data = ({
-		    	contactoNombre : this.contactoNombre,
-		    	contactoEmail : this.contactoEmail,
-		    	contactoTelefono : this.contactoTelefono,
-		    	pedido : $scope.Pedidos
-		    });
-
-		    $http.post('/presupuesto', data)
-		    	.success(function(data, status, headers, config){
-		    		console.log("Se mando Julian");
-		    	})
-		    	.error(function(data, status, headers, config){
-		    		console.log("No se mando ni mierda");
-		    	});
-		    };
-		}
+	}
 ]);

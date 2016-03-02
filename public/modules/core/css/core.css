@@ -10,3 +10,17 @@
 .ng-valid.ng-dirty {
 	border-color: #78FA89;
 }
+.textoCarrito{
+	color:#FFF;
+	float:right;
+	margin-top: 15px;
+}
+.textCarrito:hover{
+	color: #FFF;
+	text-decoration: none;
+}
+.iconoCarrito{
+	color:#FFF;
+	float:right;
+	font-size:45px;
+}

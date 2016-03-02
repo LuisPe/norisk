@@ -21,7 +21,7 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 	        
         function icono_cross() {
 
-          if (isClosed == true) {          
+          if (isClosed === true) {          
             overlay.hide();
             trigger.removeClass('is-open');
             trigger.addClass('is-closed');
@@ -29,7 +29,7 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
           } else {   
             overlay.show();
             trigger.removeClass('is-closed');
-            trigger.addClass('is-open');
+            trigger.addClass('is-open');	
             isClosed = true;
           }
       	}

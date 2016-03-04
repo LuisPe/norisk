@@ -9,31 +9,30 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$statePa
 	  	$scope.offset = 0;
 	  	$('button').prop('disabled', true);
 
-	  	// Page changed handler
+	  	// Controlador de cambio de página
 	  	$scope.pageChanged = function() {
-	   	$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+	   		$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
 	  	};
 
-		// Create new Category
+		// Crea nueva empresa
 		$scope.create = function() {
-			// Create new Category object
 			var empresa = new Empresas ({
 				descripcion: this.descripcion,
 				nombre: this.nombre
 			});
 
-			// Redirect after save
+			// Redirecciona luego de guardar
 			empresa.$save(function(response) {
 				$location.path('empresas/' + response._id);
 
-				// Clear form fields
+				// Limpia los campos
 				$scope.nombre = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
 		};
 
-		// Remove existing Category
+		// Elimina empresa existente
 		$scope.remove = function(empresa) {
 			if ( empresa ) { 
 				empresa.$remove();
@@ -50,7 +49,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$statePa
 			}
 		};
 
-		// Update existing Category
+		// Actualiza empresa existente
 		$scope.update = function() {
 			var empresa = $scope.empresa;
 
@@ -61,44 +60,25 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$statePa
 			});
 		};
 
-		// Find a list of Empresas
+		// Lista empresas
 		$scope.find = function() {
 			$scope.empresas = Empresas.query();
 		};
 
-		// Find existing Category
+		// Retorna una empresa
 		$scope.findOne = function() {
 			$scope.empresa = Empresas.get({ 
 				empresaId: $stateParams.empresaId
 			});
 		};
 
-		// Search for a empresa
+		// Busca por empresa
 		$scope.empresaSearch = function(empresa) {
 			$location.path('empresas/' + empresa._id);
 		};
 
-		
-		var data = ({
-    	    	contactoNombre : this.contactoNombre,
-    	    	contactoEmail : this.contactoEmail,
-    	    	contactoTelefono : this.contactoTelefono,
-    	    	contactoConsulta : this.contactoConsulta
-    	    });
-		
-		//VALIDACION DE FORMULARIOS
-		if(data.contactoNombre === undefined){
-			console.log('Hola');
-			/*$('button').prop('disabled', false);*/
-		}
-		else{
-			console.log('Adios');
-			$('button').prop('disabled', false);
-		};
-
-		//SEND EMAIL
         $scope.sendMail = function(){
-    	    var data = ({
+    	    var data = ({ // Almacena los datos del formulario
     	    	contactoNombre : this.contactoNombre,
     	    	contactoEmail : this.contactoEmail,
     	    	contactoTelefono : this.contactoTelefono,
@@ -118,7 +98,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$statePa
     				  "extendedTimeOut": "1000"
     				};
     	    		toastr.success('Consulta enviada, muchas gracias!');
-    	    		$location.path('/');
+    	    		$location.path('/'); // Redirecciona al home
     		  }, function errorCallback(response) {
     	    		console.log("No se ha enviado la consulta");
     		  });

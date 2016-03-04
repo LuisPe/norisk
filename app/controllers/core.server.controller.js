@@ -3,9 +3,9 @@
 
 var nodemailer = require('nodemailer');
 
-// create reusable transporter object using the default SMTP transport
+// create reusable transporter object
 var transporter = nodemailer.createTransport({
-	service: 'gmail', // <- resolved as 'Postmark' from the wellknown info
+	service: 'gmail',
     auth: {
     	user: "luispedrotoloy@gmail.com",
     	pass: "ermafa_03"
@@ -42,7 +42,8 @@ exports.sendMailContacto = function(req, res){
 		}
 	console.log('Message sent: ' + info.response);
 	});
-	res.json('Success');
+	
+	res.json('Success'); // Retorna el servicio http
 };
 
 /**
@@ -53,9 +54,9 @@ exports.sendMailPresupuesto = function(req, res){
 	var data = req.body;
 	var productos = "";
 
-	for (var p in data.pedido){
+	for (var p in data.pedido){ // Listado de productos dentro del pedido
 		productos += "<li>Producto: "+data.pedido[p].producto+ ", Cantidad: "+data.pedido[p].cantidad+"</li>";
-	};
+	}
 
 	var mailOptions = {
 		from: data.contactoEmail,
@@ -70,5 +71,6 @@ exports.sendMailPresupuesto = function(req, res){
 		}
 	console.log('Message sent: ' + info.response);
 	});
-	res.json('Success');
+
+	res.json('Success'); // Retorna el servicio http
 };

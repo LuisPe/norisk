@@ -4,13 +4,14 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 	function(PedidoService,$scope,$http,$location){
 		$scope.Pedidos = PedidoService.pedido;
 
+ 		// Agrega producto al pedido
 		$scope.agregarPedido = function(nombre,cantidad){
 			if(PedidoService.existeProducto(nombre)){
 				PedidoService.eliminarProducto(nombre);
 				PedidoService.agregarProducto(nombre,cantidad);
 			} else {
 				PedidoService.agregarProducto(nombre,cantidad);
-			};
+			}
 			toastr.options = {
 			  "closeButton": true,
 			  "progressBar": true,
@@ -20,12 +21,14 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 			toastr.success('Pedido agregado');
 		};
 
+ 		// Edita producto dentro del pedido
 		$scope.editarProducto = function(nombre,cantidad){
 			if(cantidad){
 	    		PedidoService.editarProducto(nombre,cantidad);
 			}
 		};
 
+ 		// Elimina producto del pedido
 		$scope.eliminarProducto = function(nombre){
 			PedidoService.eliminarProducto(nombre);
 		};
@@ -34,16 +37,17 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 	        PedidoService.pedido = $scope.Pedidos;
 	    });
 
-	    //SEND EMAIL
+	    // Envío de email
 	    $scope.sendMail = function(){
-		    var data = ({
+		    var data = ({ // Almacena los datos del formulario
 		    	contactoNombre : this.contactoNombre,
 		    	contactoEmail : this.contactoEmail,
 		    	contactoTelefono : this.contactoTelefono,
 		    	pedido : $scope.Pedidos
 		    });
+		    console.log('Enviando Mail');
 
-		    $http({
+		    /*$http({
 		    	method:'POST',
 		    	url:'/presupuesto',
 		    	data: data,
@@ -56,11 +60,11 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 					  "extendedTimeOut": "1000"
 					};
 		    		toastr.success('Pedido enviado');
-		    		PedidoService.limpiarPedido();
-		    		$location.path('/');
+		    		PedidoService.limpiarPedido(); // Ellimina todos los productos del pedido
+		    		$location.path('/'); // Redirección al home
 			  }, function errorCallback(response) {
 		    		console.log("No se ha enviado el presupuesto");
-			  });
+			  });*/
 		};
 	}
 ]);

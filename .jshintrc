@@ -1,0 +1,22 @@
+{
+   "node": true,
+    "globals" : {
+        "require": false,
+        "describe": false,
+        "beforeEach": false,
+        "jasmine": false,
+        "$": false,
+        "it": false,
+        "expect": false,
+        "afterEach": false,
+        "after": true,
+        "before": true,
+        "window": true,
+        "inject": true,
+        "ApplicationConfiguration": true,
+        "inject": true,
+        "toastr":true,
+        "$http": true
+    },
+     "predef": ["angular"]
+}

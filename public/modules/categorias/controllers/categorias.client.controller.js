@@ -12,25 +12,24 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 	  	$scope.mostrar = false;
 	  	$scope.image='';
 
-	  	// Page changed handler
+		// Manejador del cambio de página
 	  	$scope.pageChanged = function() {
 	   	$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
 	  	};
 
-		// Create new Category
+		// Crea una nueva categoría
 		$scope.create = function() {
-			// Create new Category object
+
 			var categoria = new Categorias ({
 				categoria: this.categoria,
 				nombre: this.nombre,
 				descripcion: this.descripcion
 			});
 
-			// Redirect after save
 			categoria.$save(function(response) {
 				$location.path('categorias/' + response._id);
 
-				// Clear form fields
+				// Limpia los campos
 				$scope.nombre = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
@@ -38,7 +37,6 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 			toast('Categoría creada');
 		};
 
-		// Remove existing Category
 		$scope.remove = function(categoria) {
 			if ( categoria ) { 
 				categoria.$remove();
@@ -52,11 +50,11 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 				$scope.categoria.$remove(function() {
 					$location.path('categorias');
 				});
-			};
+			}
 			toast('Categoría eliminada');
 		};
 
-		// Update existing Category
+		// Actualiza categoría existente
 		$scope.update = function() {
 			var categoria = $scope.categoria;
 
@@ -68,32 +66,34 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 			toast('Categoría actualizada');
 		};
 
-		// Find a list of Categorias
+		// Lista categorías
 		$scope.find = function() {
 			$scope.categorias = Categorias.query();
 		};
 
-		// Find existing Category
+		// Retorna una categoría
 		$scope.findOne = function() {
 			$scope.categoria = Categorias.get({ 
 				categoriaId: $stateParams.categoriaId
 			});
 		};
 
-		// Search for a categoria
+		// Busca una categoría
 		$scope.categoriaSearch = function(producto) {
 			$location.path('categorias/' + producto._id);
 		};
 
-		//Listado de productos
+		// Listado de productos
 		$scope.listarProductos = function(categoria){
 			$location.path('/categorias/' + categoria._id);
 		};
 
+		// Muestra botones de 'agregar a producto'
 		$scope.mostrar = function(){
 			$scope.mostrar = !$scope.mostrar;
 		};
 
+		// Alerta Toast
 		var toast = function(msje){
 			toastr.options = {
 			  "closeButton": true,

@@ -1,13 +1,13 @@
-<section data-ng-controller="PedidoController">
+<section data-ng-controller="PedidoController"> <!-- Vista de Presupuesto -->
     <div class="panel-heading">
         <h1 class="page-header text-center">Presupuesto</h1>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5"><!-- Listado de Pedido -->
         <h2 class="page-header text-center">Lista de productos</h2>
         <producto></producto>
     </div>
     <div class="col-md-6 col-md-offset-1">
-        <form name="formularioPedido" class="form-horizontal" data-ng-submit="sendMail()" novalidate>
+        <form name="formularioPedido" class="form-horizontal" data-ng-submit="sendMail()" novalidate><!-- Formulario de envío de Presupuesto -->
             <fieldset>
                 <div class="form-group" ng-class="{ 'has-error': formaularioPedido.nombre.$touched && formaularioPedido.nombre.$invalid }">
                     <label class="control-label" for="nombre">Nombre</label>

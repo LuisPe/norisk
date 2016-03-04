@@ -80,3 +80,7 @@
 .panel-heading{
     padding: 10px 0px;
 }
+.cantidadPedido{
+  float: right;
+  width: 80px;
+}

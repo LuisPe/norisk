@@ -24,3 +24,12 @@
 	float:right;
 	font-size:45px;
 }
+.jumbotron{
+	background:transparent !important;
+}
+.jumbotron h1{
+	font-size: 8em;
+}
+.jumbotron p{
+	font-style: italic;
+}

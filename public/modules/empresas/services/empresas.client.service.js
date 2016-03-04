@@ -1,15 +1,13 @@
 'use strict';
 
-angular.module('empresas').factory('Empresas', [
-	function() {
-		// Empresas service logic
-		// ...
-
-		// Public API
-		return {
-			someMethod: function() {
-				return true;
+//Empresas service used to communicate Empresas REST endpoints
+angular.module('empresas').factory('Empresas', ['$resource',
+	function($resource) {
+		return $resource('empresas/:empresaId', { empresaId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
 			}
-		};
+		});
 	}
 ]);

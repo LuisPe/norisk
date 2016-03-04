@@ -1,12 +1,10 @@
 'use strict';
 
 module.exports = function(app) {
-	// Routing logic   
-	// ...
-	var empresas = require('../../app/controllers/empresas.server.controller');
+	var empresas = require('../controllers/empresas.server.controller');
 	var users = require('../controllers/users.server.controller');
 	var apiAuth = require('../controllers/api.authorization.server.controller');
-
+	
 	app.route('/empresas')
 		.get(empresas.list)
 		.post(apiAuth, users.requiresLogin, empresas.create);

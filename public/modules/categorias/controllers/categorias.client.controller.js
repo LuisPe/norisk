@@ -26,10 +26,6 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 				descripcion: this.descripcion
 			});
 
-			/*if ($scope.image) {
-       			$scope.upload($scope.image);
-      		}*/
-
 			// Redirect after save
 			categoria.$save(function(response) {
 				$location.path('categorias/' + response._id);
@@ -41,20 +37,6 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 			});
 			toast('Categoría creada');
 		};
-
-		/*$scope.upload = function(image){
-			Upload.upload({
-            url: 'public/images',
-            data: {file: image}
-		        }).then(function (resp) {
-		            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-		        }, function (resp) {
-		            console.log('Error status: ' + resp.status);
-		        }, function (evt) {
-		            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-		            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-		        });
-		};*/
 
 		// Remove existing Category
 		$scope.remove = function(categoria) {
@@ -121,32 +103,5 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 			};
 			toastr.success(msje);
 		};
-//SEND EMAIL
-        $scope.sendMail = function(){
-    	    var data = ({
-    	    	contactoNombre : this.contactoNombre,
-    	    	contactoEmail : this.contactoEmail,
-    	    	contactoTelefono : this.contactoTelefono,
-    	    	contactoConsulta : this.contactoConsulta
-    	    });
-
-    	    $http({
-    	    	method:'POST',
-    	    	url:'/contacto',
-    	    	data: data,
-    	    }).then(function successCallback(response) {
-    	    		console.log("Se envió correctamente la consulta");
-    				toastr.options = {
-    				  "closeButton": true,
-    				  "progressBar": true,
-    				  "timeOut": "3000",
-    				  "extendedTimeOut": "1000"
-    				};
-    	    		toastr.success('Consulta enviada, muchas gracias!');
-    	    		$location.path('/');
-    		  }, function errorCallback(response) {
-    	    		console.log("No se ha enviado la consulta");
-    		  });
-    	};
 	}
 ]);

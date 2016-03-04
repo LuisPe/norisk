@@ -1,9 +1,9 @@
 'use strict';
 
-//Setting up route
+//	Configuración de rutas
 angular.module('categorias').config(['$stateProvider',
 	function($stateProvider) {
-		// Categories state routing
+		// Rutas de Categorías
 		$stateProvider.
 		state('categorias', {
 			url: '/categorias',

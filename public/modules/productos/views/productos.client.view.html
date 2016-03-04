@@ -1,4 +1,4 @@
-<section data-ng-controller="ProductosController" data-ng-init="find()">
+<section data-ng-controller="ProductosController" data-ng-init="find()"> <!-- Visualización de Productos -->
     <div class="panel-heading">
         <h1 class="page-header text-center">Listado de productos</h1>
     </div>
@@ -7,7 +7,7 @@
             <input type="text" ng-model="search" typeahead="producto as producto.nombre for producto in productos | filter:$viewValue | limitTo:8" class="form-control" typeahead-on-select="productoSearch($item)" placeholder="Buscar producto...">
         </div>
     
-    <div class="list-group">
+    <div class="list-group"> <!-- Listado de Productos -->
         <a data-ng-repeat="producto in productos | limitTo: offset - productos.length | limitTo: pageSize" data-ng-href="#!/productos/{{producto._id}}" class="list-group-item" data-num-pages="numPages()">
 			<h4 class="list-group-item-heading" data-ng-bind="producto.nombre"></h4>
             <span>{{ producto.categoria.categoria }}</span>

@@ -1,5 +1,6 @@
 'use strict';
 
+// Controlador del menu lateral
 angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus',
 	function($scope, Authentication, Menus) {
 		$scope.authentication = Authentication;
@@ -18,7 +19,7 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 			$scope.isCollapsed = false;
 		});
 
-	        
+	    // Función del ícono
         function icono_cross() {
 
           if (isClosed === true) {          
@@ -33,7 +34,8 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
             isClosed = true;
           }
       	}
-	      
+	    
+	    // Cierre del memú al seleccionar opción
 		$('[data-toggle="offcanvas"]').click(function () {
 		    $('#wrapper').toggleClass('toggled');
 		    icono_cross();

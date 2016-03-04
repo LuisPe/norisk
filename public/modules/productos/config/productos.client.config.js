@@ -1,6 +1,7 @@
 'use strict';
 
 // Configuring the Articles module
+// Fuera de uso
 angular.module('productos').run(['Menus',
 	function(Menus) {
 		// Set top bar menu items

@@ -1,9 +1,9 @@
 'use strict';
 
-//Setting up route
+// Configurando rutas
 angular.module('productos').config(['$stateProvider',
 	function($stateProvider) {
-		// Products state routing
+		// Rutas de Productos
 		$stateProvider.
 		state('productos', {
 			url: '/productos',

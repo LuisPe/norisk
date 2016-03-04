@@ -9,12 +9,12 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 		$scope.pageSize = 10;
 		$scope.offset = 0;
 		
-		// Page changed handler
+		// Manejador del cambio de página
 		$scope.pageChanged = function() {
 			$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
 		};
 
-		// Create new Product
+		// Crea un nuevo producto
 		$scope.create = function() {
 			var producto = new Productos ({
 				nombre: this.nombre,
@@ -29,18 +29,18 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 				foto: this.foto
 			});
 
-			// Redirect after save
+			// Redirecciona luego de guardar
 			producto.$save(function(response) {
 				$location.path('productos/' + response._id);
 
-				// Clear form fields
+				// Limpia los campos
 				$scope.name = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
 		};
 
-		// Remove existing Product
+		// Elimina producto
 		$scope.remove = function(producto) {
 			if ( producto ) {
 				producto.$remove();
@@ -54,17 +54,11 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 				$scope.producto.$remove(function() {
 					$location.path('productos');
 				});
-			};
-			toastr.options = {
-			  "closeButton": true,
-			  "progressBar": true,
-			  "timeOut": "3000",
-			  "extendedTimeOut": "1000"
-			};
+			}
 			toast('Producto eliminado');
 		};
 
-		// Update existing Product
+		// Actualiza producto existente
 		$scope.update = function() {
 			var producto = $scope.producto;
 			producto.categoria = producto.categoria._id;
@@ -74,15 +68,14 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-			toast('Producto actualizado')
+			toast('Producto actualizado');
 		};
 
 		var appendCategory = function appendCategory(p) {
-			// You could substitue use of filter here with underscore etc.
 			p.categoria = $filter('filter')($scope.categorias, {_id: p.categoria})[0];
 		};
 
-		// Find a list of Productos
+		// Lista productos
 		$scope.find = function() {
 			Productos.query(function loadedProductos(productos) {
 				productos.forEach(appendCategory);
@@ -90,18 +83,19 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 			});
 		};
 
-		// Find existing Product
+		// Retorna un producto
 		$scope.findOne = function() {
 			$scope.producto = Productos.get({
 				productoId: $stateParams.productoId
 			}, appendCategory);
 		};
 
-		// Search for a producto
+		// Busca un producto
 		$scope.productoSearch = function(producto) {
 			$location.path('productos/' + producto._id);
 		};
 
+		// Alerta toast
 		var toast = function(msje){
 			toastr.options = {
 			  "closeButton": true,

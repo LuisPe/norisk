@@ -76,9 +76,8 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$statePa
 			$location.path('empresas/' + empresa._id);
 		};
 
-		// Envío de email
         $scope.sendMail = function(){
-    	    var data = ({ // Almacena los datos del formulario
+        	var data = ({ // Almacena los datos del formulario
     	    	contactoNombre : this.contactoNombre,
     	    	contactoEmail : this.contactoEmail,
     	    	contactoTelefono : this.contactoTelefono,

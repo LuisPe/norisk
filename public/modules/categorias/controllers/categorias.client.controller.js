@@ -24,12 +24,7 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 				nombre: this.nombre,
 				descripcion: this.descripcion
 			});
-			console.log(this.image);
-			if (this.image) {
-       			$scope.upload(this.image);
-      		}
 
-			// Redirecciona luego de guardar
 			categoria.$save(function(response) {
 				$location.path('categorias/' + response._id);
 
@@ -40,22 +35,7 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 			});
 			toast('Categoría creada');
 		};
-
-		$scope.upload = function(image){
-			Upload.upload({
-	            url: 'public/images',
-	            data: image
-		        }).then(function (resp) {
-		            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-		        }, function (resp) {
-		            console.log('Error status: ' + resp.status);
-		        }, function (evt) {
-		            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-		            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-		    });
-		};
-
-		// Elimina Categoría
+		
 		$scope.remove = function(categoria) {
 			if ( categoria ) { 
 				categoria.$remove();
@@ -122,26 +102,5 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 			};
 			toastr.success(msje);
 		};
-		// Envío de email
-        $scope.sendMail = function(){
-    	    var data = ({
-    	    	contactoNombre : this.contactoNombre,
-    	    	contactoEmail : this.contactoEmail,
-    	    	contactoTelefono : this.contactoTelefono,
-    	    	contactoConsulta : this.contactoConsulta
-    	    });
-
-    	    $http({
-    	    	method:'POST',
-    	    	url:'/contacto',
-    	    	data: data,
-    	    }).then(function successCallback(response) {
-    	    		console.log("Se envió correctamente la consulta");
-    	    		toast('Consulta enviada, muchas gracias!');
-    	    		$location.path('/');
-    		  }, function errorCallback(response) {
-    	    		console.log("No se ha enviado la consulta");
-    		  });
-    	};
 	}
 ]);

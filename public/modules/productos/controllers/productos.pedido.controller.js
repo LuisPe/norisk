@@ -47,7 +47,7 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 		    });
 		    console.log('Enviando Mail');
 
-		    /*$http({
+		    $http({
 		    	method:'POST',
 		    	url:'/presupuesto',
 		    	data: data,
@@ -64,7 +64,7 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 		    		$location.path('/'); // Redirección al home
 			  }, function errorCallback(response) {
 		    		console.log("No se ha enviado el presupuesto");
-			  });*/
+			  });
 		};
 	}
 ]);

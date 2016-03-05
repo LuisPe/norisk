@@ -7,39 +7,32 @@
         <producto></producto>
     </div>
     <div class="col-md-6 col-md-offset-1">
-        <form name="formularioPedido" class="form-horizontal" data-ng-submit="sendMail()" novalidate><!-- Formulario de envío de Presupuesto -->
-            <fieldset>
-                <div class="form-group" ng-class="{ 'has-error': formaularioPedido.nombre.$touched && formaularioPedido.nombre.$invalid }">
-                    <label class="control-label" for="nombre">Nombre</label>
-                    <div class="controls">
-                        <input type="text" name="nombre" data-ng-model="contactoNombre" id="nombre" class="form-control" placeholder="Nombre" required autofocus>
-                    </div>
-                    <div ng-if="formularioPedido.nombre.$error.required" class="error">
-                      Debe completar este campo...
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="contactoEmail">Email</label>
-                    <div class="controls">
-                        <input type="email" name="contactoEmail" data-ng-model="contactoEmail" id="email" class="form-control" placeholder="Email" required>
-                    </div>
-                    <div ng-if="!formularioPedido.contactoEmail.$error.required && formularioPedido.contactoEmail.$error.email" class="error">
-                      Ingrese una dirección de correo válida...
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label" for="telefono">Telefono</label>
-                    <div class="controls">
-                        <input name="telefono" data-ng-model="contactoTelefono" id="telefono" class="form-control" placeholder="Telefono" required="">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-default">
-                </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
-            </fieldset>
+        <!-- FORMULARIO DE PRESUPUESTO -->
+        <form name="formularioPresupuesto" ng-submit="sendMail()" novalidate>
+            
+            <!-- NOMBRE -->
+            <div class="form-group" ng-class="{ 'has-error' : formularioPresupuesto.contactoNombre.$invalid && !formularioPresupuesto.contactoNombre.$pristine }">
+                <label>Nombre</label>
+                <input type="text" name="contactoNombre" class="form-control" ng-model="contactoNombre" required>
+                <p ng-show="formularioPresupuesto.contactoNombre.$invalid && !formularioPresupuesto.contactoNombre.$pristine" class="error">Debe ingresar un nombre.</p>
+            </div>
+          
+            <!-- EMAIL -->
+            <div class="form-group" ng-class="{ 'has-error' : formularioPresupuesto.contactoEmail.$invalid && !formularioPresupuesto.contactoEmail.$pristine }">
+                <label>Email</label>
+                <input type="email" name="contactoEmail" class="form-control" ng-model="contactoEmail" required>
+                <p ng-show="formularioPresupuesto.contactoEmail.$invalid && !formularioPresupuesto.contactoEmail.$pristine" class="error">Ingrese un email válido.</p>
+            </div>
+            
+            <!-- TELEFONO -->
+            <div class="form-group" ng-class="{ 'has-error' : formularioPresupuesto.contactoTelefono.$invalid && !formularioPresupuesto.contactoTelefono.$pristine }">
+                <label>Telefono</label>
+                <input type="text" name="contactoTelefono" class="form-control" ng-model="contactoTelefono" required>
+                <p ng-show="formularioPresupuesto.contactoTelefono.$invalid && !formularioPresupuesto.contactoTelefono.$pristine" class="error">Debe ingresar un teléfono.</p>
+            </div>
+
+            <!-- BOTON SUBMIT -->
+            <button type="submit" class="btn btn-primary" ng-disabled="formularioPresupuesto.$invalid">Enviar</button>
         </form>
     </div>
 </section>

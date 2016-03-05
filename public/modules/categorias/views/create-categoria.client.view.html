@@ -24,9 +24,9 @@
                     </div>
                 </div>
                 <div class="form-group"> <!-- Agregar imagen a Categoría -->
-                    <label class="control-label" for="name">Image</label>
+                    <label class="control-label" for="name">Imagen</label>
                     <div class="controls">
-                        <input type="file" data-ng-model="image" name="image" id="image" my-file-upload="uploadImage" required>
+                        <input type="file" ngf-select data-ng-model="image" name="image" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-resize="{width: 100, height: 100}"required>
                          {{selectedFile.name}}
                     </div>
                 </div>

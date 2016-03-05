@@ -2,19 +2,18 @@
 
 // Categorias controller
 angular.module('categorias').controller('CategoriasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Categorias','Productos',
-'$filter',
-	function($scope, $stateParams, $location, Authentication, Categorias, Productos, $filter) {
+'$filter', 'Upload',
+	function($scope, $stateParams, $location, Authentication, Categorias, Productos, $filter, Upload) {
 		$scope.authentication = Authentication;
 		$scope.productos = Productos.query();
 	  	$scope.currentPage = 1;
 	  	$scope.pageSize = 10;
 	  	$scope.offset = 0;
 	  	$scope.mostrar = false;
-	  	$scope.image='';
 
 		// Manejador del cambio de página
 	  	$scope.pageChanged = function() {
-	   	$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+	   		$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
 	  	};
 
 		// Crea una nueva categoría
@@ -25,10 +24,10 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 				nombre: this.nombre,
 				descripcion: this.descripcion
 			});
-
-			/*if ($scope.image) {
-       			$scope.upload($scope.image);
-      		}*/
+			console.log(this.image);
+			if (this.image) {
+       			$scope.upload(this.image);
+      		}
 
 			// Redirecciona luego de guardar
 			categoria.$save(function(response) {
@@ -42,10 +41,10 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 			toast('Categoría creada');
 		};
 
-		/*$scope.upload = function(image){
+		$scope.upload = function(image){
 			Upload.upload({
-            url: 'public/images',
-            data: {file: image}
+	            url: 'public/images',
+	            data: image
 		        }).then(function (resp) {
 		            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
 		        }, function (resp) {
@@ -53,8 +52,8 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 		        }, function (evt) {
 		            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
 		            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-		        });
-		};*/
+		    });
+		};
 
 		// Elimina Categoría
 		$scope.remove = function(categoria) {

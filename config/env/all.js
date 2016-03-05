@@ -21,7 +21,9 @@ module.exports = {
 				'public/lib/toastr/toastr.min.css'
 			],
 			js: [
+				'public/lib/ng-file-upload/ng-file-upload-shim.min.js',
 				'public/lib/angular/angular.js',
+				'public/lib/ng-file-upload/ng-file-upload.min.js',
 				'public/lib/angular-resource/angular-resource.js', 
 				'public/lib/angular-cookies/angular-cookies.js', 
 				'public/lib/angular-animate/angular-animate.js', 
@@ -33,7 +35,6 @@ module.exports = {
 				'public/lib/angular/angular-messages.js',
 				'public/lib/jquery/dist/jquery.min.js',
 				'public/lib/bootstrap/dist/js/bootstrap.min.js',
-				'public/lib/ng-file-upload/ng-file-upload.min.js',
 				'public/lib/vegas/vegas.js',
 				'public/lib/toastr/toastr.min.js'
 			]

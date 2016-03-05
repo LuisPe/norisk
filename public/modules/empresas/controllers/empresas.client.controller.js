@@ -7,7 +7,6 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$statePa
 	  	$scope.currentPage = 1;
 	  	$scope.pageSize = 10;
 	  	$scope.offset = 0;
-	  	$('button').prop('disabled', true);
 
 	  	// Controlador de cambio de página
 	  	$scope.pageChanged = function() {
@@ -78,7 +77,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$statePa
 		};
 
         $scope.sendMail = function(){
-    	    var data = ({ // Almacena los datos del formulario
+        	var data = ({ // Almacena los datos del formulario
     	    	contactoNombre : this.contactoNombre,
     	    	contactoEmail : this.contactoEmail,
     	    	contactoTelefono : this.contactoTelefono,

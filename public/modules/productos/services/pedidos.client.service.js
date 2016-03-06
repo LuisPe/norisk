@@ -3,7 +3,7 @@
 // Servicio de pedido para presupuestar
 angular.module('productos').service('PedidoService', function(){
 	var pedido = this;
-	this.pedido = [{'producto':'Algo','cantidad':4}]; // Productos de testeo
+	this.pedido = []; // Productos de testeo
 
 	// Agrega producto al pedido
 	this.agregarProducto = function(nombre, cantidad){

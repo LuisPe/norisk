@@ -24,7 +24,7 @@
        </div>
        <div class="modal-body">
           <div class="col-md-4">
-             <img ng-src="/images/{{categoria.categoria}}/{{producto.codigo}}.jpg" alt="">
+             <img ng-src="/images/{{categoria.categoria}}/{{producto.nombre}}.jpg" alt="">
           </div>
           <div class="col-md-7 col-md-offset-1">
             <ul class="list-unstyled">
@@ -37,13 +37,13 @@
               <li><span class="descripcion">Colores: </span><span class="detalleProducto">{{producto.colores}}</span></li>
             </ul>
             <div class="col-md-9">
-              <button class="btn btn-default agregarPedido" ng-click="mostrar()">Agregar a pedido</button>
+              <button class="btn btn-default agregarPedido hvr-wobble-vertical" ng-click="mostrar()">Agregar a pedido</button>
               <span ng-hide="mostrar" data-ng-controller="PedidoController">
                 <input type="number" ng-model="cantidad" class="form-control cantidadPedido"></input>
                 <label class="cantidadPedido" style="margin-right: 3px;">Cantidad: </label>
-                <button ng-click="agregarPedido(producto.nombre, cantidad)" type="button" class="btn btn-default" data-dismiss="modal">Enviar</button>
+                <button ng-click="agregarPedido(producto.nombre, cantidad)" type="button" class="btn btn-success hvr-wobble-vertical" data-dismiss="modal">Enviar</button>
               </span>
-              <a class="btn btn-primary" href="/#!/productos/{{producto._id}}/edit" data-ng-show="authentication.user">Editar</a>
+              <a class="btn btn-primary hvr-wobble-vertical" href="/#!/productos/{{producto._id}}/edit" data-ng-show="authentication.user">Editar</a>
             </div>
           </div>
        </div>

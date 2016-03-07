@@ -2,8 +2,8 @@
 
 // Categorias controller
 angular.module('categorias').controller('CategoriasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Categorias','Productos',
-'$filter', 'Upload',
-	function($scope, $stateParams, $location, Authentication, Categorias, Productos, $filter, Upload) {
+'$filter',
+	function($scope, $stateParams, $location, Authentication, Categorias, Productos, $filter) {
 		$scope.authentication = Authentication;
 		$scope.productos = Productos.query();
 	  	$scope.currentPage = 1;

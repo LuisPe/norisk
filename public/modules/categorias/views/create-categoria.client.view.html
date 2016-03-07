@@ -23,15 +23,8 @@
                         <textarea name="descripcion" data-ng-model="descripcion" id="descripcion" class="form-control" cols="30" rows="10" placeholder="Descripcion"></textarea>
                     </div>
                 </div>
-                <div class="form-group"> <!-- Agregar imagen a Categoría -->
-                    <label class="control-label" for="name">Imagen</label>
-                    <div class="controls">
-                        <input type="file" ngf-select data-ng-model="image" name="image" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-resize="{width: 100, height: 100}"required>
-                         {{selectedFile.name}}
-                    </div>
-                </div>
                 <div class="form-group">
-                    <input type="submit" class="btn btn-default">
+                    <input type="submit" class="btn btn-success hvr-wobble-vertical">
                 </div>
 				<div data-ng-show="error" class="text-danger">
 					<strong data-ng-bind="error"></strong>

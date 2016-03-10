@@ -16,7 +16,7 @@
 .descripcion{
   font-size  : 24px;
   font-weight: bold;
-  color      : orange;
+  color      : #F7F7F7;
 }
 .detalleProducto{
   font-size: 19px;
@@ -79,8 +79,4 @@
 }
 .panel-heading{
     padding: 10px 0px;
-}
-.cantidadPedido{
-  float: right;
-  width: 80px;
 }

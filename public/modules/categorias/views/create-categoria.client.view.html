@@ -2,25 +2,31 @@
     <div class="panel-heading">
         <h1 class="page-header text-center">Nueva Categoria</h1>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-7 col-md-offset-2">
         <form class="form-horizontal" data-ng-submit="create()" novalidate><!--Formulario Nueva Categoría -->
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label" for="categoria">Categoria</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="categoria" id="categoria" class="form-control" placeholder="Categoria" required>
+                        <input type="text" data-ng-model="categoria" id="categoria" class="form-control" required>
+                        <span class="form-highlight"></span>
+                        <span class="form-bar"></span>
+                        <label class="float-label">Categoría</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="nombre">Nombre</label>
                     <div class="controls">
-                        <input type="text" data-ng-model="nombre" id="nombre" class="form-control" placeholder="Nombre" required>
+                        <input type="text" data-ng-model="nombre" id="nombre" class="form-control" required>
+                        <span class="form-highlight"></span>
+                        <span class="form-bar"></span>
+                        <label class="float-label">Nombre</label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="descripcion">Descripcion</label>
                     <div class="controls">
-                        <textarea name="descripcion" data-ng-model="descripcion" id="descripcion" class="form-control" cols="30" rows="10" placeholder="Descripcion"></textarea>
+                        <textarea name="descripcion" data-ng-model="descripcion" id="descripcion" class="form-control" cols="30" rows="5" required></textarea>
+                        <span class="form-highlight"></span>
+                        <span class="form-bar"></span>
+                        <label class="float-label">Descripcion</label>
                     </div>
                 </div>
                 <div class="form-group">

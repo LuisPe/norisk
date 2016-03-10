@@ -1,7 +1,19 @@
 <section data-ng-controller="CategoriasController" data-ng-init="findOne()"> <!-- Muestra una categoría -->
-	<div class="linkPresupuesto">
-		<a ng-href="/#!/presupuesto" class="textoCarrito hvr-icon-drop">Ver presupuesto</a>
-	</div>
+	<div class="row">
+		<!-- BUSCADOR -->
+        <div class="form-group col-md-2">
+            <div class="controls">
+                <input type="text" ng-model="search" typeahead="producto as producto.nombre for producto in productos | filter : producto.categoria = categoria._id | limitTo:8" class="form-control" typeahead-on-select="productoSearch($item)" id="search">
+                <span class="form-highlight"></span>
+                <span class="form-bar"></span>
+                <label class="float-label" for="search" >Buscar producto</label>
+            </div>
+        </div>
+        <!-- PRESUPUESTO -->
+        <div class="linkPresupuesto">
+            <a ng-href="/#!/presupuesto" class="textoCarrito hvr-icon-drop">Ver presupuesto</a>
+        </div>
+    </div>
 	<div class="panel-heading">
 		<h1 class="page-header text-center" data-ng-bind="categoria.nombre"></h1>
 	</div>

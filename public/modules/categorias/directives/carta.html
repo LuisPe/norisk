@@ -8,8 +8,8 @@
           <div class="header reverso">
                <h4 data-ng-bind="producto.nombre"></h4>
            </div>
-           <div class="body-reverso listado">
-              <a style="float:right;" data-toggle="modal" data-target="#modal-fullscreen{{producto._id}}">+Info</a>
+           <div class="body-reverso">
+              <a class="btn btn-default hvr-wobble-horizontal" data-toggle="modal" data-target="#modal-fullscreen{{producto._id}}">+Info</a>
            </div>
        </div>  
    </div>
@@ -36,14 +36,18 @@
               <li><span class="descripcion">Peso: </span><span class="detalleProducto">{{producto.peso}}</span></li>
               <li><span class="descripcion">Colores: </span><span class="detalleProducto">{{producto.colores}}</span></li>
             </ul>
-            <div class="col-md-9">
-              <button class="btn btn-default agregarPedido hvr-wobble-vertical" ng-click="mostrar()">Agregar a pedido</button>
-              <span ng-hide="mostrar" data-ng-controller="PedidoController">
-                <input type="number" ng-model="cantidad" class="form-control cantidadPedido"></input>
-                <label class="cantidadPedido" style="margin-right: 3px;">Cantidad: </label>
-                <button ng-click="agregarPedido(producto.nombre, cantidad)" type="button" class="btn btn-success hvr-wobble-vertical" data-dismiss="modal">Enviar</button>
-              </span>
-              <a class="btn btn-primary hvr-wobble-vertical" href="/#!/productos/{{producto._id}}/edit" data-ng-show="authentication.user">Editar</a>
+            <div class="col-md-8">
+                <button class="btn btn-default agregarPedido hvr-wobble-vertical" ng-click="mostrar()">Agregar a pedido</button>
+                <span ng-hide="mostrar" data-ng-controller="PedidoController">
+                    <div class="form-group col-md-3" style="float: right; margin-top: 0">
+                        <input type="number" ng-model="cantidad" class="form-control"></input>
+                        <span class="form-highlight"></span>
+                        <span class="form-bar"></span>
+                        <label class="float-label">Cantidad</label>
+                    </div>
+                    <button ng-click="agregarPedido(producto.nombre, cantidad)" type="button" class="btn btn-success hvr-wobble-vertical" data-dismiss="modal">Enviar</button>
+                </span>
+                <a class="btn btn-primary hvr-wobble-vertical" href="/#!/productos/{{producto._id}}/edit" data-ng-show="authentication.user">Editar</a>
             </div>
           </div>
        </div>

@@ -8,30 +8,38 @@
             
             <!-- NOMBRE -->
             <div class="form-group" ng-class="{ 'has-error' : formularioContacto.contactoNombre.$invalid && !formularioContacto.contactoNombre.$pristine }">
-                <label>Nombre</label>
                 <input type="text" name="contactoNombre" class="form-control" ng-model="contactoNombre" required>
                 <p ng-show="formularioContacto.contactoNombre.$invalid && !formularioContacto.contactoNombre.$pristine" class="error">Debe ingresar un nombre.</p>
+                <span class="form-highlight"></span>
+                <span class="form-bar"></span>
+                <label class="float-label">Nombre</label>
             </div>
             
             <!-- EMAIL -->
             <div class="form-group" ng-class="{ 'has-error' : formularioContacto.contactoEmail.$invalid && !formularioContacto.contactoEmail.$pristine }">
-                <label>Email</label>
                 <input type="email" name="contactoEmail" class="form-control" ng-model="contactoEmail" required>
                 <p ng-show="formularioContacto.contactoEmail.$invalid && !formularioContacto.contactoEmail.$pristine" class="error">Ingrese un email válido.</p>
+                <span class="form-highlight"></span>
+                <span class="form-bar"></span>
+                <label class="float-label">Email</label>
             </div>
             
             <!-- TELEFONO -->
             <div class="form-group" ng-class="{ 'has-error' : formularioContacto.contactoTelefono.$invalid && !formularioContacto.contactoTelefono.$pristine }">
-                <label>Telefono</label>
                 <input type="text" name="contactoTelefono" class="form-control" ng-model="contactoTelefono" required>
                 <p ng-show="formularioContacto.contactoTelefono.$invalid && !formularioContacto.contactoTelefono.$pristine" class="error">Debe ingresar un teléfono.</p>
+                <span class="form-highlight"></span>
+                <span class="form-bar"></span>
+                <label class="float-label">Teléfono</label>
             </div>
 
             <!-- CONSULTA -->
             <div class="form-group" ng-class="{ 'has-error' : formularioContacto.contactoConsulta.$invalid && !formularioContacto.contactoConsulta.$pristine }">
-                <label>Consulta</label>
                 <textarea name="contactoConsulta" data-ng-model="contactoConsulta" class="form-control" cols="30" rows="4" required></textarea>
                 <p ng-show="formularioContacto.contactoConsulta.$invalid && !formularioContacto.contactoConsulta.$pristine" class="error">Debe ingresar una consulta.</p>
+                <span class="form-highlight"></span>
+                <span class="form-bar"></span>
+                <label class="float-label">Consulta</label>
             </div>
 
             <!-- BOTON SUBMIT -->

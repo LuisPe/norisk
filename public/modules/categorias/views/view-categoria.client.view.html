@@ -1,12 +1,12 @@
 <section data-ng-controller="CategoriasController" data-ng-init="findOne()"> <!-- Muestra una categoría -->
 	<div class="row">
 		<!-- BUSCADOR -->
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-2 col-sm-2 col-xs-2 buscador" data-ng-controller="ProductosController">
             <div class="controls">
-                <input type="text" ng-model="search" typeahead="producto as producto.nombre for producto in productos | filter : producto.categoria = categoria._id | limitTo:8" class="form-control" typeahead-on-select="productoSearch($item)" id="search">
+                <input type="text" ng-model="search" typeahead="producto as producto.nombre for producto in productos | filter : $viewValue | limitTo:8" class="form-control" typeahead-on-select="productoSearch($item)" id="search">
                 <span class="form-highlight"></span>
                 <span class="form-bar"></span>
-                <label class="float-label" for="search" >Buscar producto</label>
+                <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
             </div>
         </div>
         <!-- PRESUPUESTO -->

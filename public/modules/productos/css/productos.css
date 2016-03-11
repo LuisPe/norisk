@@ -393,3 +393,10 @@ fieldset[disabled] .form-control {
   outline: 0;
   box-shadow: none;
 }
+.buscador{
+  float: right;
+  background: rgba(0, 0, 0, 0.7);
+  padding: .3em;
+  color: #F7F7F7;
+  margin: 0 0 0 .1em;
+}

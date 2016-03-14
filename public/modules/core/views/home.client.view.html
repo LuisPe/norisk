@@ -1,6 +1,8 @@
 <section data-ng-controller="HomeController">
-	<div class="jumbotron text-center">
-	    <h1>NORISK</h1>
-	    <p>"Acá va un eslogan Lorem ipsum dolor sit amet, consectetur adipisicing elit"</p>
-	</div>
+	<span data-ng-controller="EmpresasController" data-ng-init="find()">
+		<div data-ng-repeat="empresa in empresas" class="jumbotron text-center">
+		    <h1 data-ng-bind="empresa.nombre"></h1>
+		    <p data-ng-bind="empresa.eslogan"></p>
+		</div>
+	</span>
 </section>

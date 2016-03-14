@@ -21,6 +21,14 @@
                         <label class="float-label" for="descripcion">Descripcion</label>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="controls">
+                        <input type="text" data-ng-model="empresa.eslogan" id="eslogan" class="form-control" required>
+                        <span class="form-highlight"></span>
+                        <span class="form-bar"></span>
+                        <label class="float-label" for="eslogan">Eslogan</label>
+                    </div>
+                </div>
                 <div data-ng-show="authentication.user" class="form-group">
                     <input type="submit" value="Actualizar" class="btn btn-success hvr-wobble-vertical">
                     <a ng-href="/#!/la-empresa" class="btn btn-primary hvr-wobble-vertical">Cancelar</a>

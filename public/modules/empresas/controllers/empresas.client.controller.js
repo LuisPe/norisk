@@ -16,8 +16,9 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$statePa
 		// Crea nueva empresa
 		$scope.create = function() {
 			var empresa = new Empresas ({
+				nombre: this.nombre,
 				descripcion: this.descripcion,
-				nombre: this.nombre
+				eslogan: this.eslogan
 			});
 
 			// Redirecciona luego de guardar

@@ -23,7 +23,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$statePa
 
 			// Redirecciona luego de guardar
 			empresa.$save(function(response) {
-				$location.path('empresas/' + response._id);
+				$location.path('la-empresa/' + response._id);
 
 				// Limpia los campos
 				$scope.nombre = '';
@@ -44,7 +44,7 @@ angular.module('empresas').controller('EmpresasController', ['$scope', '$statePa
 				}
 			} else {
 				$scope.empresa.$remove(function() {
-					$location.path('empresas');
+					$location.path('la-empresa');
 				});
 			}
 		};

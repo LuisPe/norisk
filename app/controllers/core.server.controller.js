@@ -10,7 +10,7 @@ var transporter = nodemailer.createTransport(smtpTransport({
 	port: 465,
 	secure: true,
     auth: {
-    	user: "ventas@norisargentina.com.ar",
+    	user: "ventas@noriskargentina.com.ar",
     	pass: "norisk2016"
     }
 }));

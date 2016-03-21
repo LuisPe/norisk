@@ -18,7 +18,7 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 			  "timeOut": "3000",
 			  "extendedTimeOut": "1000"
 			};
-			toastr.success('Pedido agregado');
+			toastr.success('Producto agregado');
 		};
 
  		// Edita producto dentro del pedido

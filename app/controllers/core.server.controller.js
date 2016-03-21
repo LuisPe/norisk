@@ -2,15 +2,18 @@
 
 
 var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 
 // create reusable transporter object
-var transporter = nodemailer.createTransport({
-	service: 'gmail',
+var transporter = nodemailer.createTransport(smtpTransport({
+	hots: 'smtp.zoho.com',
+	port: 465,
+	secure: true,
     auth: {
-    	user: "luispedrotoloy@gmail.com",
-    	pass: "ermafa_03"
+    	user: "ventas@norisargentina.com.ar",
+    	pass: "norisk2016"
     }
-});
+}));
 
 /**
  * Module dependencies.

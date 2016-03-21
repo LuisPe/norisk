@@ -3,12 +3,12 @@
 
 var nodemailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
+var wellknown = require('nodemailer-wellknown'); // Servicios conocidos
+var config = wellknown('zoho'); // Configuración servicio zoho
 
 // create reusable transporter object
 var transporter = nodemailer.createTransport(smtpTransport({
-	hots: 'smtp.zoho.com',
-	port: 465,
-	secure: true,
+	service: 'zoho',
     auth: {
     	user: "ventas@noriskargentina.com.ar",
     	pass: "norisk2016"
@@ -33,8 +33,8 @@ exports.sendMailContacto = function(req, res){
 	var data = req.body;
 
 	var mailOptions = {
-		from: data.contactoEmail,
-		to:'luiyo_toloy@hotmail.com',
+		from: 'noriskargentina@gmail.com',
+		to:'ventas@noriskargentina.com.ar',
 		subject: 'Nueva Consulta Norisk',
 		html: "<b>Nombre: </b> "+data.contactoNombre+"<br><b>Email: </b>"+data.contactoEmail+"<br><b>Teléfono: </b>"+data.contactoTelefono+"<br><b>Consulta: </b><br>"+data.contactoConsulta,
 	};
@@ -62,8 +62,8 @@ exports.sendMailPresupuesto = function(req, res){
 	}
 
 	var mailOptions = {
-		from: data.contactoEmail,
-		to:'luiyo_toloy@hotmail.com',
+		from: 'noriskargentina@gmail.com',
+		to:'ventas@noriskargentina.com.ar',
 		subject: 'Nuevo Pedido Norisk',
 		html: "<b>Nombre: </b> "+data.contactoNombre+"<br><b>Email: </b>"+data.contactoEmail+"<br><b>Teléfono: </b>"+data.contactoTelefono+"<br><b>Pedido:</b><br> <ul>"+productos+"</ul>",
 	};
@@ -77,3 +77,20 @@ exports.sendMailPresupuesto = function(req, res){
 
 	res.json('Success'); // Retorna el servicio http
 };
+
+// Upload File - No funciona
+/*
+var express	=	require("express");
+var multer	=	require('multer');
+
+exports.uploadImage = function(req,res){
+	var image = req.body;
+	var upload = multer({   dest: '../public/images/'}).single(image);
+	upload(req,res,function(err) {
+		if(err) {
+			return res.end("Error uploading file.");
+		}
+		res.end("File is uploaded");
+	});
+};
+*/

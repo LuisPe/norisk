@@ -11,3 +11,27 @@ angular.module('productos').factory('Productos', ['$resource',
 		});
 	}
 ]);
+/* Upload file, no funciona
+.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file){
+        var fd = new FormData();
+        fd.append('file', file);
+		
+		$http({
+    	    	method:'POST',
+    	    	url:'/imagen',
+    	    	data: fd,
+	            transformRequest: angular.identity,
+	            headers: {'Content-Type': undefined}
+       })
+    
+       .success(function(){
+       		console.log('imagen subida');
+       })
+    
+       .error(function(){
+       		console.log('error al subir imagen');
+       });
+    }
+ }]);
+*/

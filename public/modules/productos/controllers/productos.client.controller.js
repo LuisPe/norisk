@@ -38,6 +38,8 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+
+			// $scope.uploadFile(); Upload File no funciona
 		};
 
 		// Elimina producto
@@ -95,6 +97,16 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 			$location.path('productos/' + producto._id);
 		};
 
+		/* Upload File no funciona
+		$scope.uploadFile = function(){
+           var image = $scope.image;
+           
+           console.log('file is ' );
+           console.dir(image);
+           
+           fileUpload.uploadFileToUrl(image);
+        };
+		*/
 		// Alerta toast
 		var toast = function(msje){
 			toastr.options = {

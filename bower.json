@@ -1,7 +1,7 @@
 {
   "name": "norisk",
   "version": "0.0.1",
-  "description": "Venta de productos de seguridad vial",
+  "description": "Somos NORISK-ARGENTINA, una empresa joven especializada en venta de productos de seguridad vial e industrial.",
   "dependencies": {
     "bootstrap": "~3",
     "angular": "~1.2",

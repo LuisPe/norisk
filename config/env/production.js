@@ -1,11 +1,6 @@
 'use strict';
 
 module.exports = {
-	app: {
-		title: 'norisk',
-		description: 'Somos NORISK-ARGENTINA, una empresa joven especializada en venta de productos de seguridad vial e industrial.',
-		keywords: 'Seguridad, seguridad vial, vial, conos, cono, modelo, utilitario, camino, king cone, transporte, minero, rutero, obrador, autopista, camino, ruta, calle, línea económica, ciudad, econo, cono de polietileno semirigido, vencedor, cono de pvc flexible con memoria, souvenir, mini, multiuso, tortuga, demarcatorios, delineador rebatible, reflectivo, poliuretano, ordenador de fila, polietileno semirigido, cinta autoenrollable, columna,  collares HIP, pancarta, bucisenda, puntera bicisenda, carril, punteras carril, reductores de velocidad, despertador, atenuador, banda HIP, garita, rampa, lomo de burro, punteras lomo, tacha divisoria bidireccional, protectores y canalizadores, bumper, urbano, transito, canalizador de transito, campana, antichoque, indicadores, reloj, totem, wet floor, piso mojado, mojón, carteleria, reducción de calzada, banderillero, acero zincado, normas DNV, hombres trabajando, obra, equipo pesado en la vía, mano única, zona de obras, calzada en desnivel, GIP, area restringida, cartel plástico, desvío a la derecha, desvío a la izquierda, circule con precaución, reducción de calzada, obra en construcción, zanja abierta, no avanzar, plástico corrugado, atril, sostén de carteles, accesorios, tope de estacionamiento, garage, calza, calzas para neumáticos, soga de unión, subida cordón, malla, polipropileno, baliluz, soga de nylon, cadenas, cinta precaución, cinta peligro, batería descartable, baliza autoportante, led flash, señalización nocturna, flash cone, organizacion vial, señalizacion Vial, seguridad Industrial, proteccion personal'
-	},
 	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/norisk',
 	assets: {
 		lib: {

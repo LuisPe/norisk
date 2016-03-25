@@ -29,7 +29,7 @@ angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfig
 // Setting HTML5 Location Mode
 angular.module(ApplicationConfiguration.applicationModuleName).config(['$locationProvider',
 	function($locationProvider) {
-		$locationProvider.hashPrefix('!');
+		$locationProvider.html5Mode(true);
 	}
 ]);
 
@@ -67,6 +67,7 @@ ApplicationConfiguration.registerModule('users');
 'use strict';
 
 // Configuring the Articles module
+// En desuso
 angular.module('categorias').run(['Menus',
 	function(Menus) {
 		// Set top bar menu items
@@ -77,10 +78,10 @@ angular.module('categorias').run(['Menus',
 ]);
 'use strict';
 
-//Setting up route
+//	Configuración de rutas
 angular.module('categorias').config(['$stateProvider',
 	function($stateProvider) {
-		// Categories state routing
+		// Rutas de Categorías
 		$stateProvider.
 		state('categorias', {
 			url: '/categorias',
@@ -112,52 +113,32 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 	  	$scope.pageSize = 10;
 	  	$scope.offset = 0;
 	  	$scope.mostrar = false;
-	  	$scope.image='';
 
-	  	// Page changed handler
+		// Manejador del cambio de página
 	  	$scope.pageChanged = function() {
-	   	$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+	   		$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
 	  	};
 
-		// Create new Category
+		// Crea una nueva categoría
 		$scope.create = function() {
-			// Create new Category object
+
 			var categoria = new Categorias ({
 				categoria: this.categoria,
 				nombre: this.nombre,
 				descripcion: this.descripcion
 			});
 
-			/*if ($scope.image) {
-       			$scope.upload($scope.image);
-      		}*/
-
-			// Redirect after save
 			categoria.$save(function(response) {
 				$location.path('categorias/' + response._id);
 
-				// Clear form fields
+				// Limpia los campos
 				$scope.nombre = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+			toast('Categoría creada');
 		};
-
-		/*$scope.upload = function(image){
-			Upload.upload({
-            url: 'public/images',
-            data: {file: image}
-		        }).then(function (resp) {
-		            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-		        }, function (resp) {
-		            console.log('Error status: ' + resp.status);
-		        }, function (evt) {
-		            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-		            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-		        });
-		};*/
-
-		// Remove existing Category
+		
 		$scope.remove = function(categoria) {
 			if ( categoria ) { 
 				categoria.$remove();
@@ -172,9 +153,10 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 					$location.path('categorias');
 				});
 			}
+			toast('Categoría eliminada');
 		};
 
-		// Update existing Category
+		// Actualiza categoría existente
 		$scope.update = function() {
 			var categoria = $scope.categoria;
 
@@ -183,35 +165,49 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+			toast('Categoría actualizada');
 		};
 
-		// Find a list of Categorias
+		// Lista categorías
 		$scope.find = function() {
 			$scope.categorias = Categorias.query();
 		};
 
-		// Find existing Category
+		// Retorna una categoría
 		$scope.findOne = function() {
 			$scope.categoria = Categorias.get({ 
 				categoriaId: $stateParams.categoriaId
 			});
 		};
 
-		// Search for a categoria
+		// Busca una categoría
 		$scope.categoriaSearch = function(producto) {
 			$location.path('categorias/' + producto._id);
 		};
 
-		//Listado de productos
+		// Listado de productos
 		$scope.listarProductos = function(categoria){
 			$location.path('/categorias/' + categoria._id);
 		};
 
+		// Muestra botones de 'agregar a producto'
 		$scope.mostrar = function(){
 			$scope.mostrar = !$scope.mostrar;
 		};
+
+		// Alerta Toast
+		var toast = function(msje){
+			toastr.options = {
+			  "closeButton": true,
+			  "progressBar": true,
+			  "timeOut": "3000",
+			  "extendedTimeOut": "1000"
+			};
+			toastr.success(msje);
+		};
 	}
 ]);
+
 'use strict';
 
 angular.module('categorias').directive('carta',function(){
@@ -256,6 +252,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 ]);
 'use strict';
 
+// Controlador del menu lateral
 angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus',
 	function($scope, Authentication, Menus) {
 		$scope.authentication = Authentication;
@@ -274,7 +271,7 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 			$scope.isCollapsed = false;
 		});
 
-	        
+	    // Función del ícono
         function icono_cross() {
 
           if (isClosed === true) {          
@@ -289,7 +286,8 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
             isClosed = true;
           }
       	}
-	      
+	    
+	    // Cierre del memú al seleccionar opción
 		$('[data-toggle="offcanvas"]').click(function () {
 		    $('#wrapper').toggleClass('toggled');
 		    icono_cross();
@@ -485,44 +483,154 @@ angular.module('empresas').run(['Menus',
 //Setting up route
 angular.module('empresas').config(['$stateProvider',
 	function($stateProvider) {
-		// Empresas state routing
+		// Categories state routing
 		$stateProvider.
+		state('empresas', {
+			url: '/la-empresa',
+			templateUrl: 'modules/empresas/views/empresas.client.view.html'
+		}).
 		state('create-empresa', {
-			url: '/empresascreate',
+			url: '/empresas/create',
 			templateUrl: 'modules/empresas/views/create-empresa.client.view.html'
 		}).
-		state('empresas', {
-			url: '/empresas',
-			templateUrl: 'modules/empresas/views/empresas.client.view.html'
+		state('view-empresa', {
+			url: '/empresas/:empresaId',
+			templateUrl: 'modules/empresas/views/view-empresa.client.view.html'
+		}).
+		state('contacto', {
+			url: '/contacto',
+			templateUrl: 'modules/empresas/views/contacto-empresa.client.view.html'
+		}).
+		state('edit-empresa', {
+			url: '/empresas/:empresaId/edit',
+			templateUrl: 'modules/empresas/views/edit-empresa.client.view.html'
 		});
 	}
 ]);
 'use strict';
 
-angular.module('empresas').controller('EmpresasController', ['$scope',
-	function($scope) {
-		// Controller Logic
-		// ...
+// Empresas controller
+angular.module('empresas').controller('EmpresasController', ['$scope', '$stateParams', '$location', 'Authentication', 'Empresas', '$http',
+	function($scope, $stateParams, $location, Authentication, Empresas, $http) {
+		$scope.authentication = Authentication;
+	  	$scope.currentPage = 1;
+	  	$scope.pageSize = 10;
+	  	$scope.offset = 0;
+
+	  	// Controlador de cambio de página
+	  	$scope.pageChanged = function() {
+	   		$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
+	  	};
+
+		// Crea nueva empresa
+		$scope.create = function() {
+			var empresa = new Empresas ({
+				nombre: this.nombre,
+				descripcion: this.descripcion,
+				eslogan: this.eslogan
+			});
+
+			// Redirecciona luego de guardar
+			empresa.$save(function(response) {
+				$location.path('la-empresa/' + response._id);
+
+				// Limpia los campos
+				$scope.nombre = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Elimina empresa existente
+		$scope.remove = function(empresa) {
+			if ( empresa ) { 
+				empresa.$remove();
+
+				for (var i in $scope.empresas) {
+					if ($scope.empresas [i] === empresa) {
+						$scope.empresas.splice(i, 1);
+					}
+				}
+			} else {
+				$scope.empresa.$remove(function() {
+					$location.path('la-empresa');
+				});
+			}
+		};
+
+		// Actualiza empresa existente
+		$scope.update = function() {
+			var empresa = $scope.empresa;
+
+			empresa.$update(function() {
+				$location.path('la-empresa');
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Lista empresas
+		$scope.find = function() {
+			$scope.empresas = Empresas.query();
+		};
+
+		// Retorna una empresa
+		$scope.findOne = function() {
+			$scope.empresa = Empresas.get({ 
+				empresaId: $stateParams.empresaId
+			});
+		};
+
+		// Busca por empresa
+		$scope.empresaSearch = function(empresa) {
+			$location.path('empresas/' + empresa._id);
+		};
+
+        $scope.sendMail = function(){
+        	var data = ({ // Almacena los datos del formulario
+    	    	contactoNombre : this.contactoNombre,
+    	    	contactoEmail : this.contactoEmail,
+    	    	contactoTelefono : this.contactoTelefono,
+    	    	contactoConsulta : this.contactoConsulta
+    	    });
+
+    	    $http({
+    	    	method:'POST',
+    	    	url:'/contacto',
+    	    	data: data,
+    	    }).then(function successCallback(response) {
+    	    		console.log("Se envió correctamente la consulta");
+    				toastr.options = {
+    				  "closeButton": true,
+    				  "progressBar": true,
+    				  "timeOut": "3000",
+    				  "extendedTimeOut": "1000"
+    				};
+    	    		toastr.success('Consulta enviada, muchas gracias!');
+    	    		$location.path('/'); // Redirecciona al home
+    		  }, function errorCallback(response) {
+    	    		console.log("No se ha enviado la consulta");
+    		  });
+    	};
 	}
 ]);
 'use strict';
 
-angular.module('empresas').factory('Empresas', [
-	function() {
-		// Empresas service logic
-		// ...
-
-		// Public API
-		return {
-			someMethod: function() {
-				return true;
+//Empresas service used to communicate Empresas REST endpoints
+angular.module('empresas').factory('Empresas', ['$resource',
+	function($resource) {
+		return $resource('empresas/:empresaId', { empresaId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
 			}
-		};
+		});
 	}
 ]);
 'use strict';
 
 // Configuring the Articles module
+// Fuera de uso
 angular.module('productos').run(['Menus',
 	function(Menus) {
 		// Set top bar menu items
@@ -533,10 +641,10 @@ angular.module('productos').run(['Menus',
 ]);
 'use strict';
 
-//Setting up route
+// Configurando rutas
 angular.module('productos').config(['$stateProvider',
 	function($stateProvider) {
-		// Products state routing
+		// Rutas de Productos
 		$stateProvider.
 		state('productos', {
 			url: '/productos',
@@ -567,12 +675,12 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 		$scope.pageSize = 10;
 		$scope.offset = 0;
 		
-		// Page changed handler
+		// Manejador del cambio de página
 		$scope.pageChanged = function() {
 			$scope.offset = ($scope.currentPage - 1) * $scope.pageSize;
 		};
 
-		// Create new Product
+		// Crea un nuevo producto
 		$scope.create = function() {
 			var producto = new Productos ({
 				nombre: this.nombre,
@@ -587,18 +695,20 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 				foto: this.foto
 			});
 
-			// Redirect after save
+			// Redirecciona luego de guardar
 			producto.$save(function(response) {
 				$location.path('productos/' + response._id);
 
-				// Clear form fields
+				// Limpia los campos
 				$scope.name = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+
+			// $scope.uploadFile(); Upload File no funciona
 		};
 
-		// Remove existing Product
+		// Elimina producto
 		$scope.remove = function(producto) {
 			if ( producto ) {
 				producto.$remove();
@@ -613,9 +723,10 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 					$location.path('productos');
 				});
 			}
+			toast('Producto eliminado');
 		};
 
-		// Update existing Product
+		// Actualiza producto existente
 		$scope.update = function() {
 			var producto = $scope.producto;
 			producto.categoria = producto.categoria._id;
@@ -625,14 +736,14 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+			toast('Producto actualizado');
 		};
 
 		var appendCategory = function appendCategory(p) {
-			// You could substitue use of filter here with underscore etc.
 			p.categoria = $filter('filter')($scope.categorias, {_id: p.categoria})[0];
 		};
 
-		// Find a list of Productos
+		// Lista productos
 		$scope.find = function() {
 			Productos.query(function loadedProductos(productos) {
 				productos.forEach(appendCategory);
@@ -640,25 +751,47 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 			});
 		};
 
-		// Find existing Product
+		// Retorna un producto
 		$scope.findOne = function() {
 			$scope.producto = Productos.get({
 				productoId: $stateParams.productoId
 			}, appendCategory);
 		};
 
-		// Search for a producto
+		// Busca un producto
 		$scope.productoSearch = function(producto) {
 			$location.path('productos/' + producto._id);
+		};
+
+		/* Upload File no funciona
+		$scope.uploadFile = function(){
+           var image = $scope.image;
+           
+           console.log('file is ' );
+           console.dir(image);
+           
+           fileUpload.uploadFileToUrl(image);
+        };
+		*/
+		// Alerta toast
+		var toast = function(msje){
+			toastr.options = {
+			  "closeButton": true,
+			  "progressBar": true,
+			  "timeOut": "3000",
+			  "extendedTimeOut": "1000"
+			};
+			toastr.success(msje);
 		};
 	}
 ]);
 'use strict';
 
-angular.module('productos').controller('PedidoController', ['PedidoService', '$scope', '$http',
-	function(PedidoService,$scope,$http){
+angular.module('productos').controller('PedidoController', ['PedidoService', '$scope', '$http', '$location',
+	function(PedidoService,$scope,$http,$location){
 		$scope.Pedidos = PedidoService.pedido;
 
+ 		// Agrega producto al pedido
 		$scope.agregarPedido = function(nombre,cantidad){
 			if(PedidoService.existeProducto(nombre)){
 				PedidoService.eliminarProducto(nombre);
@@ -666,14 +799,23 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 			} else {
 				PedidoService.agregarProducto(nombre,cantidad);
 			}
+			toastr.options = {
+			  "closeButton": true,
+			  "progressBar": true,
+			  "timeOut": "3000",
+			  "extendedTimeOut": "1000"
+			};
+			toastr.success('Producto agregado');
 		};
 
+ 		// Edita producto dentro del pedido
 		$scope.editarProducto = function(nombre,cantidad){
 			if(cantidad){
 	    		PedidoService.editarProducto(nombre,cantidad);
 			}
 		};
 
+ 		// Elimina producto del pedido
 		$scope.eliminarProducto = function(nombre){
 			PedidoService.eliminarProducto(nombre);
 		};
@@ -682,50 +824,85 @@ angular.module('productos').controller('PedidoController', ['PedidoService', '$s
 	        PedidoService.pedido = $scope.Pedidos;
 	    });
 
-	    //SEND EMAIL
-	    this.sendMail = function(){
-	    	console.log(this.contactoNombre + this.contactoEmail + this.contactoTelefono);
-		    var data = ({
+	    // Envío de email
+	    $scope.sendMail = function(){
+		    var data = ({ // Almacena los datos del formulario
 		    	contactoNombre : this.contactoNombre,
 		    	contactoEmail : this.contactoEmail,
 		    	contactoTelefono : this.contactoTelefono,
 		    	pedido : $scope.Pedidos
 		    });
+		    console.log('Enviando Mail');
 
-		    $http.post('/presupuesto', data)
-		    	.success(function(data, status, headers, config){
-		    		console.log('Se mando Julian');
-		    	})
-		    	.error(function(data, status, headers, config){
-		    		console.log('No se mando ni mierda');
-		    	});
-		    };
-		}
+		    $http({
+		    	method:'POST',
+		    	url:'/presupuesto',
+		    	data: data,
+		    }).then(function successCallback(response) {
+		    		console.log("Se envió correctamente el presupuesto");
+					toastr.options = {
+					  "closeButton": true,
+					  "progressBar": true,
+					  "timeOut": "3000",
+					  "extendedTimeOut": "1000"
+					};
+		    		toastr.success('Pedido enviado');
+		    		PedidoService.limpiarPedido(); // Ellimina todos los productos del pedido
+		    		$location.path('/'); // Redirección al home
+			  }, function errorCallback(response) {
+		    		console.log("No se ha enviado el presupuesto");
+			  });
+		};
+	}
 ]);
 'use strict';
 
-angular.module('productos').directive('producto',function(){
+angular.module('productos').directive('producto',function(){ // Directiva de Producto en pedido
 	return{
 		restrict: 'E',
 		templateUrl: 'modules/productos/directives/producto.html'
 	};
 });
+/* Upload File, no funciona
+.directive('fileModel', ['$parse', function ($parse) {
+    return {
+       restrict: 'A',
+       link: function(scope, element, attrs) {
+          var model = $parse(attrs.fileModel);
+          var modelSetter = model.assign;
+          
+          element.bind('change', function(){
+             scope.$apply(function(){
+                modelSetter(scope, element[0].files[0]);
+             });
+          });
+       }
+    };
+ }]);
+ */
 'use strict';
 
+// Servicio de pedido para presupuestar
 angular.module('productos').service('PedidoService', function(){
 	var pedido = this;
-	this.pedido = [];
+	this.pedido = []; // Productos de testeo
 
-
+	// Agrega producto al pedido
 	this.agregarProducto = function(nombre, cantidad){
 		this.pedido.push({'producto':nombre,'cantidad':cantidad}); 
 	};
 
+	// Elimina producto del pedido
 	this.eliminarProducto = function(producto){
-		var index = this.pedido.indexOf(producto);
-		this.pedido.splice(index,1);
+		for (var i in this.pedido){
+			if (this.pedido[i].producto === producto){
+				console.log(i);
+				this.pedido.splice(i,1);
+			}
+		}
 	};
 
+	// Edita cantidad en producto del pedido
 	this.editarProducto = function(producto,cantidad){
 		$.each(this.pedido, function() {
 		    if (this.producto === producto) {
@@ -734,10 +911,12 @@ angular.module('productos').service('PedidoService', function(){
 		});
 	};
 
-	this.listarProductos = function(){
-		return pedido;
+	// Elimina todo producto del pedido
+	this.limpiarPedido = function(){
+		this.pedido = [];
 	};
 
+	// Consulta la existencia de producto en el pedido
 	this.existeProducto = function(producto){
 		$.each(this.pedido, function() {
 			if(this.producto === producto){
@@ -760,7 +939,30 @@ angular.module('productos').factory('Productos', ['$resource',
 		});
 	}
 ]);
-
+/* Upload file, no funciona
+.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file){
+        var fd = new FormData();
+        fd.append('file', file);
+		
+		$http({
+    	    	method:'POST',
+    	    	url:'/imagen',
+    	    	data: fd,
+	            transformRequest: angular.identity,
+	            headers: {'Content-Type': undefined}
+       })
+    
+       .success(function(){
+       		console.log('imagen subida');
+       })
+    
+       .error(function(){
+       		console.log('error al subir imagen');
+       });
+    }
+ }]);
+*/
 'use strict';
 
 // Config HTTP Error Handling
@@ -810,10 +1012,10 @@ angular.module('users').config(['$stateProvider',
 			url: '/settings/accounts',
 			templateUrl: 'modules/users/views/settings/social-accounts.client.view.html'
 		}).
-		state('signup', {
+		/*state('signup', {
 			url: '/signup',
 			templateUrl: 'modules/users/views/authentication/signup.client.view.html'
-		}).
+		}).*/
 		state('signin', {
 			url: '/signin',
 			templateUrl: 'modules/users/views/authentication/signin.client.view.html'

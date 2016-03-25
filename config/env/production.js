@@ -34,7 +34,7 @@ module.exports = {
 				'public/lib/vegas/vegas.js',
 				'public/lib/toastr/toastr.min.js'
 			]
-		},,
+		},
 		css: 'public/dist/application.min.css',
 		js: 'public/dist/application.min.js'
 	},

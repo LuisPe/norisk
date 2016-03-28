@@ -81,3 +81,25 @@
 .btn-danger:hover{
 	border: solid #F7F7F7 1px;
 }
+footer {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    color: #F7F7F7;
+    left: 0;
+    bottom: 0;
+    height: 3.5em;
+    width: 100%;
+    padding-top: .3em;
+    overflow:hidden;
+    font-size: 13px;
+}
+footer div{
+	padding: .5em;
+}
+.creditos{
+	text-align: right;
+}
+section > section{
+	position:relative;
+	z-index: 1000;
+}

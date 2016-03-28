@@ -763,6 +763,11 @@ angular.module('productos').controller('ProductosController', ['$scope', '$state
 			$location.path('productos/' + producto._id);
 		};
 
+		// Muestra botones de 'agregar a producto'
+		$scope.mostrar = function(){
+			$scope.mostrar = !$scope.mostrar;
+		};
+
 		/* Upload File no funciona
 		$scope.uploadFile = function(){
            var image = $scope.image;

@@ -1,6 +1,6 @@
-[![NORISK-ARGENTINA](http://meanjs.org/img/logo-small.png)](http://noriskergentina.com.ar/)
+[NORISK-ARGENTINA](http://noriskergentina.com.ar/)
 
--2016- Sitio Web creado con MEAN.JS
+## -2016- Sitio Web creado con MEAN.JS
 [![MEAN.JS Logo](http://meanjs.org/img/logo-small.png)](http://meanjs.org/)
 MEAN.JS es una solución open-source full-stack JavaScript, lo que proporciona un punto de partida sólido para aplicaciones basada en [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/). La idea es resolver los problemas comunes en la conexión de los framework y construir un full-stack sólido para soportar las necesidades de desarrollo diarias. Por último ayudar a los desarrolladores a utilizar mejores prácticas de desarrollo mientras se trabaja con componentes populares de JavaScript. 
 

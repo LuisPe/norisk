@@ -8,6 +8,6 @@ var mongoose = require('mongoose'),
   Categoria = mongoose.model('Categoria'),
     _ = require('lodash');
 
-var crud = require('./crud.server.controller')('Categoria', 'nombre');
+var crud = require('./crud.server.controller')('Categoria', 'created');
 
 module.exports = crud;

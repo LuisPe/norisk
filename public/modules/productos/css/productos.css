@@ -17,7 +17,7 @@
 .carta-container {
   display: inline-block;
   height: 300px;
-  margin: 12px;
+  margin: 12px 12px 26px 12px;
   position: relative;
   width: 260px;
   z-index: 1;
@@ -26,6 +26,15 @@
   -webkit-perspective: 800;
   -moz-perspective: 800;
   perspective: 800;
+}
+.carta-container > p {
+  font-family: 'Lato', sans-serif;
+  margin: 8px 0 8px 0;
+  text-align: center;
+  font-weight: 400;
+  font-size: 17px;
+  color: #f7f7f7;
+  background: rgba(0, 0, 0, 0.7);
 }
 .carta {
   box-shadow: 0px 0px 5px black;

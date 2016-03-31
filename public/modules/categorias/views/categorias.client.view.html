@@ -16,6 +16,7 @@
 
          <!-- LISTADO DE CATEGORIAS -->
         <div class="carta-container" data-ng-repeat="categoria in categorias">
+            <p data-ng-bind="categoria.nombre"></p>
             <div class="carta">
                 <div class="lado frente">
                     <img ng-src="/images/{{categoria.categoria}}.jpg" alt="">

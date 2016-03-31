@@ -16,6 +16,10 @@ var CategoriaSchema = new Schema({
 		trim: true, 	
 		unique : true,
 	},
+	created: {
+		type: Date,
+		default: Date.now
+	},
 	nombre: {
 		type: String,
 		default: '',

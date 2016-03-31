@@ -84,7 +84,7 @@
 footer {
 	font-family: 'Lato', sans-serif;
     background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
+    position: fixed;
     color: #F7F7F7;
     left: 0;
     bottom: 0;

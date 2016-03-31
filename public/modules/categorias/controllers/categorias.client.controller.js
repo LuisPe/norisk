@@ -35,9 +35,9 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 			});
 			toast('Categoría creada');
 		};
-		
+
 		$scope.remove = function(categoria) {
-			if ( categoria ) { 
+			if ( categoria ) {
 				categoria.$remove();
 
 				for (var i in $scope.categorias) {
@@ -72,7 +72,7 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 
 		// Retorna una categoría
 		$scope.findOne = function() {
-			$scope.categoria = Categorias.get({ 
+			$scope.categoria = Categorias.get({
 				categoriaId: $stateParams.categoriaId
 			});
 		};
@@ -84,7 +84,7 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 
 		// Listado de productos
 		$scope.listarProductos = function(categoria){
-			$location.path('/categorias/' + categoria._id);
+			$location.path('/view-categorias/' + categoria._id);
 		};
 
 		// Muestra botones de 'agregar a producto'

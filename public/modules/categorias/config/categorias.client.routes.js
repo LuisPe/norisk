@@ -6,7 +6,7 @@ angular.module('categorias').config(['$stateProvider',
 		// Rutas de Categorías
 		$stateProvider.
 		state('categorias', {
-			url: '/categorias',
+			url: '/view-categorias',
 			templateUrl: 'modules/categorias/views/categorias.client.view.html'
 		}).
 		state('create-categoria', {
@@ -14,7 +14,7 @@ angular.module('categorias').config(['$stateProvider',
 			templateUrl: 'modules/categorias/views/create-categoria.client.view.html'
 		}).
 		state('view-categoria', {
-			url: '/categorias/:categoriaId',
+			url: '/view-categorias/:categoriaId',
 			templateUrl: 'modules/categorias/views/view-categoria.client.view.html',
 		}).
 		state('edit-categoria', {

@@ -84,7 +84,7 @@ angular.module('categorias').config(['$stateProvider',
 		// Rutas de Categorías
 		$stateProvider.
 		state('categorias', {
-			url: '/categorias',
+			url: '/view-categorias',
 			templateUrl: 'modules/categorias/views/categorias.client.view.html'
 		}).
 		state('create-categoria', {
@@ -92,7 +92,7 @@ angular.module('categorias').config(['$stateProvider',
 			templateUrl: 'modules/categorias/views/create-categoria.client.view.html'
 		}).
 		state('view-categoria', {
-			url: '/categorias/:categoriaId',
+			url: '/view-categorias/:categoriaId',
 			templateUrl: 'modules/categorias/views/view-categoria.client.view.html',
 		}).
 		state('edit-categoria', {
@@ -101,6 +101,7 @@ angular.module('categorias').config(['$stateProvider',
 		});
 	}
 ]);
+
 'use strict';
 
 // Categorias controller
@@ -138,9 +139,9 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 			});
 			toast('Categoría creada');
 		};
-		
+
 		$scope.remove = function(categoria) {
-			if ( categoria ) { 
+			if ( categoria ) {
 				categoria.$remove();
 
 				for (var i in $scope.categorias) {
@@ -175,7 +176,7 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 
 		// Retorna una categoría
 		$scope.findOne = function() {
-			$scope.categoria = Categorias.get({ 
+			$scope.categoria = Categorias.get({
 				categoriaId: $stateParams.categoriaId
 			});
 		};
@@ -187,7 +188,7 @@ angular.module('categorias').controller('CategoriasController', ['$scope', '$sta
 
 		// Listado de productos
 		$scope.listarProductos = function(categoria){
-			$location.path('/categorias/' + categoria._id);
+			$location.path('/view-categorias/' + categoria._id);
 		};
 
 		// Muestra botones de 'agregar a producto'

@@ -87,7 +87,3 @@
 	font-size: 12px;
 	text-align: center;
 }
-section > section{
-	position:relative;
-	z-index: 1000;
-}
